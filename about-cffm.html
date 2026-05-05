@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bhaney.net</title>
+    <link rel="stylesheet" href="res/styles.css">
+    <link rel="stylesheet" href="res/fa/css/all.css">
+</head>
+<body>
+
+    <div class="topnav">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+      <h1>bhaney.net</h1>
+    </div> 
+
+    <header>
+        <h1>Console-Friendly File Manager</h1>
+    </header>
+
+    <div class = "info-container">
+   
+    <div class = "about">
+      <img src="res/cffm.png" alt="cffm">
+    </div>
+    <div class="sidebar">
+      <h2>About</h2>
+      <p>CFFM is a minimalist terminal-based file manager. Heavily inspired by similar terminal based file managers such as `ranger` and `lf`, CFFM seeks to provide a clean, snappy, and customizable file managing experience while adherign to a minimalist, Unix-like philosophy. </p>
+    
+      <p>You can browse and manage files without moving your hands from the keyboard...</p>
+    </div>
+
+   
+    </div>
+
+    <div class="section">
+      <h2>Philosophy</h2>
+      <p>CFFM's design philosophy was inspired heavily by the <a href="https://suckless.org/philosophy/"> Suckless Philosophy</a>. Whether or not experienced hackers would consider CFFM truely "Suckless" or "KISS" is debatable, however one thing is for sure, and that is that CFFM is minimalist and not bloated. I have been using `ranger` for about a year now, and I couldn't help but notice that it was lagging behind and sometimes not responsive. This is because it was written in python, and was calling external scripts to execute commands. I was interested switching to the file manager `lf`, however it too used external configuration files and building it required installing golang. I always liked Suckless' `dwm` and `st` due to their configuration being compiled directly into the program, as well as for the fact that they are extremely portable and light programs. So, I decided to write my own terminal file manager, with simplicity and portability in mind.</p>
+
+
+    </div>
+
+    <div class="section">
+      <h2> What's New [v1.0] </h2>
+      <ul>
+        <li>After being in development for two months (on and off), CFFM is officially released, with all of it's basic functionality tested and working.</li>
+
+        <li>Added cut/copy/paste and selection functionality.</li>
+
+        <li>Fixed file previews.</li>
+
+        <li>Various bug fixes.</li>
+      </ul>
+
+      <img src="res/cffm-useage.gif" alt="cffm">
+    </div>
+
+
+    <div class="section">
+      <header>
+      <h1> 
+        <i class="fa-solid fa-book"></i> 
+        User Manual
+        <i class="fa-solid fa-book"></i>
+      </h1>
+      <hr>
+      </header>
+
+      <h2> Download <i class="fa-solid fa-download"></i></h2>
+      You can download a static "just works" binary from the <a href="https://github.com/pointerisnull/cffm/releases"> releases section on Github</a>.
+
+      <h2>Self-Compilation <i class="fa-solid fa-gears"></i></h2>
+      <p>Most of the important work is taken care of in the Makefile. All you have to do is give the right command.</p>
+      <h3>Dependencies: </h3>
+
+      <ul>
+        <li>'libncurses-dev' (Debian)</li>
+      </ul>
+
+      <h3> Compiling:</h3>
+        <ul>
+          <li>`make` for a slim, dynamically linked binary.</li>
+
+          <li>`make release` for a static binary.</li>
+        </ul>
+      <h3>Installing:</h3>
+        <ul>
+          <li>`make install`</li>
+        </ul>
+      <h3>Uninstalling CFFM</h3>
+        <ul>
+          <li>`make uninstall`</li>
+          <p>OR</p>
+          <li>sudo rm /bin/cffm</li>
+        </ul>
+      <hr>
+
+      <h2 style="text-align: center;">Default Configuration</h2>
+      <table style="margin-left: 25%">
+      <tr>
+        <th>Key</th>
+        <th>Function</th>
+      </tr>      
+      <tr>
+        <td>H</td>
+        <td>Move up a directory</td>
+      </tr>
+      <tr>
+        <td>L</td>
+        <td>Change into directory / open file</td>
+      </tr>
+      <tr>
+        <td>J</td>
+        <td>Move Cursor down file list</td>
+      </tr>
+      <tr>
+        <td>K</td>
+        <td>Move Cursor up file list</td>
+      </tr>
+      <tr>
+        <td>Q</td>
+        <td>Quit CFFM</td>
+      </tr>
+      <tr>
+        <td>:</td>
+        <td>Execute shell command</td>
+      </tr>
+      <tr>
+        <td>T</td>
+        <td>Rename File <br>(bulk rename coming soon)</td>
+      </tr>
+      <tr>
+        <td>Space</td>
+        <td>Select File(s)<br>(single select)</td>
+      </tr>
+      <tr>
+        <td>V</td>
+        <td>Visual Mode <br>(drag select)</td>
+      </tr>
+      <tr>
+        <td>X</td>
+        <td>Cut selected</td>
+      </tr>
+      <tr>
+        <td>Y</td>
+        <td>Copy selected</td>
+      </tr>
+      <tr>
+        <td>P</td>
+        <td>Paste</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>Delete selected</td>
+      </tr>
+      <tr>
+        <td>R</td>
+        <td>Toggle hidden files</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>Toggle border</td>
+      </tr>
+      </table>
+      <br>
+      <br>
+      <hr>
+    </div>
+
+      <div class = "info-container">
+
+      <div class="sidebar">
+        <h2> Configuration <i class="fa-solid fa-wrench"></i></h2>
+        <p>To configure CFFM, locate the file `config.h` in the source code you downloaded above.</p>
+        <p>You can modify any `#define` value in to your liking. This should look familiar to anyone who has used <a href="https://dwm.suckless.org/">DWM</a>, or similar software. When done, simply re-compile using the above steps and run.</p>
+      </div>
+
+       <div class = "about">
+        <img src="res/config.h.png">
+      </div>
+         
+    </div>
+
+    <div class = "section">
+      <img src="res/cffm-custom.gif">
+    </div>
+
+    <div class = "section">
+      <h3>Runtime Customization Options</h3> 
+      <p>By default, pressing `b` allows you to show/hide the border. Of course, you can configure this to your liking in `config.h`.</p>
+      <img src="res/borderswitch.gif">
+      <h4> </h4>
+    </div>
+</body>
+</html>
