@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No JS Slop</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div id="progress-bar"></div>
+
+    <div class="topnav">
+      <a class="active" href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+
+    <section>
+        <div class="container hero-zoom" style="text-align: center;">
+            <h1>BHANEY<span style="color: var(--primary);">.NET</span></h1>
+            <p>Brendan Haney</p>
+            <div style="margin-top: 3rem; animation: bounce 3s infinite;">About ↓</div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container grid-2">
+            <div class="reveal">
+                <h2>Who Am I?</h2>
+                <p>A driven self-taught programmer with several years of experience in Unix based environments. Currently a student studying Electrical Engineering and Computer Science.</p>
+                <a href="portfolio.html" class="btn">Learn More</a>
+            </div>
+            <div class="card reveal" style="height: 400px; background: linear-gradient(45deg, var(--primary), var(--secondary)); opacity: 0.8;">
+            <img src="res/pfp.jpg">
+            </div>
+        </div>
+    </section>
+
+    <section style="background: var(--surface);">
+        <div class="container">
+            <h2 class="reveal" style="text-align: center;">Work Experience</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3>MRG Labs</h3>
+                    <p>Envisioning a web where design isn't bogged down by heavy dependencies.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3>HMS Networks</h3>
+                    <p>Leveraging the CSS Scroll-Driven Animations API to handle interactivity natively.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3>The Result</h3>
+                    <p>A high-fidelity, interactive website that runs at 60fps on almost any device.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container reveal" style="text-align: center;">
+            <h2>Get in Touch</h2>
+            <p>No JavaScript Slop Here...</p>
+            <a href="contact.html" class="btn" style="background: var(--accent);">Contact Me</a>
+        </div>
+    </section>
+
+    <style>
+        /* Small helper animation for the hero arrow */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+    </style>
+
+</body>
+</html>
