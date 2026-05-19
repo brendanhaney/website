@@ -1,4 +1,3 @@
-/* --- VARIABLES & RESET --- */
 :root {
     --bg: #161616;
     --surface: #111827;
@@ -23,7 +22,6 @@ body {
     overflow-x: hidden;
 }
 
-/* --- GLOBAL SCROLL PROGRESS --- */
 #progress-bar {
     position: fixed;
     top: 0;
@@ -56,13 +54,9 @@ body {
     animation: slide-down-nav linear forwards;
     animation-timeline: scroll();
 
-    /* 4. Define the trigger point. 
-       '0vh to 100vh' means the animation happens as you scroll 
-       through the first section. */
     animation-range: 0vh 110vh;
 }
 
-/* The logic: stay hidden until the very end of the range */
 @keyframes slide-down-nav {
   0%, 75% { 
     transform: translateY(-100%); 
@@ -82,7 +76,6 @@ body {
   color: #04AA77;
 }
 
-/* Style the links inside the navigation bar */
 .topnav a {
   float: left;
   color: #f2f2f2;
@@ -92,13 +85,11 @@ body {
   font-size: 1rem;
 }
 
-/* Change the color of links on hover */
 .topnav a:hover {
   background-color: #ddd;
   color: black;
 }
 
-/* Add a color to the active/current link */
 .topnav a.active {
   background-color: #04AA77;
   color: #f2f2f2;
@@ -111,6 +102,13 @@ section {
     align-items: center;
     justify-content: center;
     padding: 4rem 10%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }
 
 .container {
@@ -120,55 +118,59 @@ section {
 
 .grid-2 {
     display: grid;
-    grid-template-columns: 1fr; /* Stacked by default */
+    grid-template-columns: 1fr;
     gap: 2rem;
     align-items: center;
 }
 
-/* The "Switch" Logic */
 @media (max-width: 768px) {
     .grid-2 .card {
-        order: -1; /* This forces the card to the top on mobile */
+        order: -1;
     }
 }
 
 @media (min-width: 769px) {
     .grid-2 {
-        grid-template-columns: 1fr 1fr; /* Side-by-side on desktop */
+        grid-template-columns: 1fr 1fr; 
         gap: 4rem;
     }
     .grid-2 .card {
-        order: 0; /* Returns to natural source order on desktop */
+        order: 0;
     }
 }
 
 .card {
     background: var(--surface);
-    height: 450px; /* Fixed height for consistent layout */
+    height: 450px; 
     border-radius: 1.5rem;
     border: 1px solid #374151;
-    overflow: hidden; /* CRITICAL: Clips image to the card's rounded corners */
+    overflow: hidden; 
     position: relative;
 }
 
-/* Add this new rule for the image itself */
 .card img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures image fills space without stretching */
+    object-fit: cover; 
     display: block;
 }
 
 /* --- SCROLL ANIMATION CLASSES --- */
 
 .reveal {
-    opacity: 0;
-    transform: translateY(50px) scale(0.95);
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
 
-    animation: reveal-up linear forwards;
-    animation-timeline: view();
+@supports (animation-timeline: view()) {
+    .reveal {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
 
-    animation-range: entry 5% cover 30%;
+        animation: reveal-up linear forwards;
+        animation-timeline: view();
+        animation-range: entry 5% contain 30%; 
+    }
 }
 
 @keyframes reveal-up {
@@ -179,19 +181,30 @@ section {
 }
 
 .hero-zoom {
-    animation: hero-fade linear forwards;
-    animation-timeline: view();
-    animation-range: exit 0% exit 100%;
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+}
+
+@supports (animation-timeline: view()) {
+    .hero-zoom {
+        animation: hero-fade linear forwards;
+        animation-timeline: view();
+        animation-range: exit 0% exit 100%;
+    }
 }
 
 @keyframes hero-fade {
-    to { opacity: 0; transform: scale(1.5); filter: blur(10px); }
+    to { 
+        opacity: 0; 
+        transform: scale(1.5); 
+        filter: blur(10px); 
+    }
 }
-
-/* --- 5. THE TIMELINE --- */
+/* --- TIMELINE --- */
 .timeline {
     position: relative;
-    margin: 4rem 0;
+    margin: 2rem 0;
 }
 
 .timeline::before {
@@ -226,7 +239,12 @@ section {
     z-index: 2;
 }
 
-/* --- 6. COMPONENTS --- */
+.timeline-header {
+	text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* --- COMPONENTS --- */
 .btn {
     display: inline-block;
     padding: 0.8rem 2rem;
