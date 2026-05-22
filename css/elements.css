@@ -1,6 +1,6 @@
 @import url('root.css');
 
-.card {
+.pic-frame {
     background: var(--surface);
     height: 450px; 
     border-radius: var(--s-lg);
@@ -9,7 +9,7 @@
     position: relative;
 }
 
-.card img {
+.pic-frame img {
     width: 100%;
     height: 100%;
     object-fit: cover; 
@@ -17,7 +17,7 @@
 }
 
 @media (max-width: 768px) {
-    .duo .card {
+    .duo .pic-frame {
         order: -1;
     }
 }
@@ -27,7 +27,7 @@
         grid-template-columns: 1fr 1fr; 
         gap: var(--s-xxl);
     }
-    .duo .card {
+    .duo .pic-frame {
         order: 0;
     }
 }
@@ -64,6 +64,7 @@
 
 .timeline-item {
     position: relative;
+    align-items: center;
     padding-left: 64px;
     margin-bottom: var(--s-xl);
 
@@ -83,57 +84,78 @@
 
 .timeline-header {
 	text-align: center;
-    margin-bottom: var(--s-xl);
+  margin-bottom: var(--s-xl);
 }
 
-.logo-group {
+/* CARD */
+
+.card {
+  background: var(--card);
+  padding: var(--s-xl);
+  margin: var(--s-xl);
+  border-radius: var(--s-lg);
+  border: var(--s-xxxs) solid var(--accent);
+}
+
+.card-header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--s-md); 
+  margin-bottom: var(--s-md);
+}
+
+.card-header-text {
+  display: flex;
+  flex-direction: column; /* Stacks title over subtext */
+  line-height: var(--s-md);
+}
+
+.card-header-text h3 {
+  margin-bottom: var(--s-xxs);
+}
+
+.card-header-text h4 {
+  margin-top: 0;
+  color: var(--secondary);
+  margin-bottom: var(--s-xxs);
+}
+
+.card-header-text strong {
+  color: var(--primary);
+  font-size: var(--s-md);
+}
+
+.card-header-text span {
+  color: var(--text-dim);
+  font-size: var(--s-md);
 }
 
 .logo-box {
-  width: var(--s-xl);
-  height: var(--s-xl);
+  width: var(--s-xxl);
+  height: var(--s-xxl);
   flex-shrink: 0;
   background: #ffffff;
   border-radius: var(--s-sm);
-  border: var(--s-xxs) solid var(--accent);
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  box-shadow: 0 0 var(--s-sm) var(--shadow);
 }
 
 .logo-box img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: var(--s-xs);
-}
-
-.logo-text {
-  display: flex;
-  flex-direction: column; /* Stacks title over subtext */
-  line-height: var(--s-md);
-  margin-top: var(--s-md);
-}
-
-.logo-text strong {
-  color: var(--primary);
-  font-size: var(--s-md);
-}
-
-.logo-text span {
-  color: var(--text-dim);
-  font-size: var(--s-md);
+  padding: var(--s-xxs);
 }
 
 /* TOPNAV */
 .topnav {
     background-color: #060606;
     overflow: hidden;
-
     position: fixed;
     top: 0;
     width: 100%;

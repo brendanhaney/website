@@ -5,7 +5,9 @@
     --secondary: #ec4899;
     --text-main: #f9fafb;
     --text-dim: #9ca3af;
+    --text-link: #97aed6;
     --accent: #38bdf8;
+    --card: #113544;
     --shadow: #ec4899;
 
     /* --- GOLDEN RATIO --- */
@@ -132,4 +134,8 @@ h4 {
 p { 
     color: var(--text-dim); 
     font-size: var(--s-md); 
+}
+
+a {
+    color: var(--text-link);
 }
