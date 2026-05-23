@@ -1,6 +1,22 @@
 @import url('root.css');
 @import url('elements.css');
 
+/* ELEMENT BOUNCE */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+.btn {
+    transition: transform 0.2s;
+}
+
+.btn:hover { 
+	transform: scale(1.05); 
+	box-shadow: 0 0 var(--s-sm) var(--shadow); 
+}
+
 /* SCROLL ANIMATION */
 .reveal {
     opacity: 1;
