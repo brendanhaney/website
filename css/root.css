@@ -1,0 +1,141 @@
+:root {
+    --bg: #161616;
+    --surface: #111827;
+    --primary: #8b5cf6;
+    --secondary: #ec4899;
+    --text-main: #f9fafb;
+    --text-dim: #9ca3af;
+    --text-link: #97aed6;
+    --accent: #38bdf8;
+    --card: #113544;
+    --shadow: #ec4899;
+
+    /* --- GOLDEN RATIO --- */
+    --s-xxxs: 0.146rem;
+    --s-xxs: 0.236rem;
+    --s-xs: 0.382rem;
+    --s-sm: 0.618rem;               
+    --s-md: 1rem;                                  
+    --s-lg: 1.618rem;                            
+    --s-xl: 2.618rem;         
+    --s-xxl: 4.236rem;       
+    --s-xxxl: 6.854rem;       
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text-main);
+    overflow-x: hidden;
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: var(--s-lg);
+    font-size: var(--s-md);
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+}
+
+.duo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-xl);
+    align-items: center;
+}
+
+
+/* --- LAYOUTS --- */
+section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--s-lg) 10%;
+    /*
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    */
+}
+
+section.surface {
+    background: var(--surface);
+}
+
+section.to-surface {
+  background: linear-gradient(
+    to bottom, 
+    var(--bg) 0%, 
+    var(--surface) 10%, 
+    var(--surface) 20%
+  );
+}
+
+section.from-surface {
+  background: linear-gradient(
+    to bottom, 
+    var(--surface) 5%, 
+    var(--bg) 10%, 
+    var(--bg) 100%
+  );
+}
+
+header {
+  text-align: center;
+  margin-bottom: var(--s-md);
+  margin-top: var(--s-md);
+}
+
+.btn {
+    display: inline-block;
+    padding: var(--s-sm) var(--s-lg);
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--s-sm);
+    font-weight: bold;
+    margin-top: var(--s-lg);
+}
+
+h1 { 
+    font-size: clamp(var(--s-xl), 10vw, var(--s-xxl)); 
+    margin-bottom: var(--s-xl); 
+}
+
+h2 { 
+    font-size: var(--s-xl); 
+    margin-bottom: var(--s-lg); 
+    color: var(--secondary); 
+	padding: var(--s-xl);
+}
+
+h3 {
+    color: var(--text-main); 
+    margin-bottom: var(--s-md); 
+}
+
+h4 {
+    margin-top: var(--s-md); 
+    color: var(--text-main); 
+    margin-bottom: var(--s-xs); 
+}
+
+p { 
+    color: var(--text-dim); 
+    font-size: var(--s-md); 
+}
+
+a {
+    color: var(--text-link);
+}
+
+hr {
+	border: var(--s-xxxs) solid var(--primary);
+	margin-top: var(--s-sm);
+	margin-bottom: var(--s-sm);
+}

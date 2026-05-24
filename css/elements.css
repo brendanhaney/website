@@ -1,0 +1,248 @@
+@import url('root.css');
+
+.pic-frame {
+    background: var(--surface);
+    height: 450px; 
+    border-radius: var(--s-lg);
+    border: 1px solid #374151;
+    overflow: hidden; 
+    position: relative;
+}
+
+.pic-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+.duo h2 {
+	padding-left: 0rem;
+	padding-top: var(--s-sm);
+	padding-bottom: var(--s-sm);
+}
+
+@media (max-width: 768px) {
+    .duo .pic-frame {
+        order: -1;
+    }
+}
+
+@media (min-width: 769px) {
+    .duo {
+        grid-template-columns: 1fr 1fr; 
+        gap: var(--s-xxl);
+    }
+    .duo .pic-frame {
+        order: 0;
+    }
+}
+
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    transform-origin: 0 50%;
+    z-index: 1000;
+    animation: grow-progress linear;
+    animation-timeline: scroll();
+}
+
+/* TIMELINE */
+
+.timeline {
+    position: relative;
+    margin: var(--s-lg) 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #374151;
+}
+
+.timeline-item {
+    position: relative;
+    align-items: center;
+    padding-left: 64px;
+    margin-bottom: var(--s-xl);
+
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 11px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: var(--bg);
+    border: 3px solid var(--accent);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.timeline-header {
+	text-align: center;
+  margin-bottom: var(--s-xl);
+}
+
+/* CARD */
+
+.card {
+  background: var(--card);
+  padding: var(--s-xl);
+  margin: var(--s-xl);
+  border-radius: var(--s-lg);
+  border: var(--s-xxxs) solid var(--accent);
+}
+
+.card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-md); 
+  margin-bottom: var(--s-md);
+}
+
+.card-header-text {
+  display: flex;
+  flex-direction: column; /* Stacks title over subtext */
+  line-height: var(--s-md);
+}
+
+.card-header-text h3 {
+  margin-bottom: var(--s-xxs);
+}
+
+.card-header-text h4 {
+  margin-top: 0;
+  color: var(--secondary);
+  margin-bottom: var(--s-xxs);
+}
+
+.card-header-text strong {
+  color: var(--primary);
+  font-size: var(--s-md);
+}
+
+.card-header-text span {
+  color: var(--text-dim);
+  font-size: var(--s-md);
+}
+
+.logo-box {
+  width: var(--s-xxl);
+  height: var(--s-xxl);
+  flex-shrink: 0;
+  background: #ffffff;
+  border-radius: var(--s-sm);
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 0 var(--s-sm) var(--shadow);
+}
+
+.logo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--s-xxs);
+}
+
+.sidebar {
+  float: left;
+  width: 35%;
+  margin-left: 2%;
+  box-sizing: border-box;
+}
+
+.sidebar img {
+  width: 100%; 
+  height: 100%; 
+  display: block;
+  object-fit: fill; /* Ensure the image fills the entire container */
+  border: var(--s-xxxs) solid var(--primary);
+}
+
+.sidebar i {
+	color: var(--text-main);
+}
+
+.sidebar p {
+	color: var(--text-main);
+	padding-left: var(--s-md);
+}
+
+.sidebar h2 {
+	font-size: var(--s-lg);
+	padding-top: var(--s-md);
+	padding-bottom: var(--s-md);
+	padding-left: var(--s-sm);
+	margin: 0rem;
+}
+
+/* HEADER */
+header h1 {
+	font-size: var(--s-xl);
+	color: var(--secondary);
+}
+
+/* TOPNAV */
+.topnav {
+	--tn-bg: var(--bg);
+	--tn-padding: var(--s-md);
+	--tn-text-color: var(--text-dim);
+	--tn-text-size: var(--s-md);
+	--tn-header-size: var(--s-lg);
+	--tn-active: var(--primary);
+	--tn-active-text: var(--text-main);
+	--tn-hover-text: black;
+
+    background-color: var(--tn-bg);
+    overflow: hidden;
+
+}
+
+.topnav h1 {
+	font-size: var(--tn-header-size);
+	color: var(--tn-active);
+  	text-align: right;
+  	padding-top: var(--tn-padding);
+  	padding-right: var(--tn-padding);
+	margin-bottom: 0rem;
+}
+
+.topnav a {
+  float: left;
+  color: var(--tn-text-color);
+  text-align: center;
+  padding: var(--tn-padding) var(--tn-padding);
+  text-decoration: none;
+  font-size: var(--tn-text-size);
+}
+
+.topnav a:hover {
+  background-color: var(--tn-active-text);
+  color: var(--tn-hover-text);
+}
+
+.topnav a.active {
+  background-color: var(--tn-active);
+  color: var(--tn-active-text);
+}
+
+.dynamic-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
