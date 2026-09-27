@@ -5,95 +5,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bhaney.net</title>
-    <link rel="stylesheet" href="res/styles.css">
-    <link rel="stylesheet" href="res/fa/css/all.css">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/elements.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/glass.css">
+    <link rel="stylesheet" href="css/liquid.css">
+    <script src="js/style.js"></script>
 </head>
 
 <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="topnav">
+        <a class="brand" href="index.html">bhaney.net</a>
+        <nav aria-label="Primary">
+            <a href="index.html">Home</a>
+            <p aria-current="page">Portfolio</p>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
 
-<div class="topnav">
-  <a href="index.html">Home</a>
-  <a class="active" href="portfolio.html">Portfolio</a>
-  <a href="contact.html">Contact</a>
-  <h1>bhaney.net</h1>
-</div> 
+    <main id="main" tabindex="-1">
+        <header class="page-header container">
+            <p class="eyebrow">Software &amp; hardware</p>
+            <h1>Project Portfolio</h1>
+        </header>
 
-<header>
-    <h1>Project Portfolio</h1>
-</header>
+        <div class="container projects">
+            <article class="fade" id="medwheel">
+                <a class="thumbnail" href="https://devpost.com/software/mediwheel"
+                    aria-label="Read about MedWheel on Devpost">
+                    <img src="res/img/medwheel-preview.webp" width="1000" height="562"
+                        alt="MedWheel prescription management logo">
+                </a>
+                <div>
+                    <h2>MedWheel</h2>
+                    <p>Medicine Cabinet for the Disadvantaged<br>&amp; Startup Company</p>
+                    <div class="links">
+                        <a class="link"
+                            href="https://www.linkedin.com/posts/b-haney_a-few-short-weeks-ago-i-had-the-incredible-activity-7267216351834861568-TltP">Reveal
+                            <span aria-hidden="true">↗</span></a>
+                        <a class="link" href="https://devpost.com/software/mediwheel">About <span
+                                aria-hidden="true">↗</span></a>
+                        <a class="link" href="https://www.github.com/pointerisnull/medwheel">Source Code <span
+                                aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </article>
 
-<div class="container">
+            <article class="fade" id="physisim">
+                <a class="thumbnail" href="about-physics.html" aria-label="Read about Physîsîm">
+                    <img src="res/img/temp-phys.jpg" width="1920" height="1080"
+                        alt="Newton’s cradle illustration for the Physîsîm physics engine" loading="lazy">
+                </a>
+                <div>
+                    <h2>Physîsîm</h2>
+                    <p>OpenGl Physics Engine Utilizing Custom Language &amp; Interpreter</p>
+                    <div class="links">
+                        <a class="link" href="res/doc/physisim-whitepaper.pdf">Whitepaper (PDF) <span
+                                aria-hidden="true">↗</span></a>
+                        <a class="link" href="https://www.github.com/pointerisnull/physisim">Source Code <span
+                                aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </article>
 
-    <div class="portfolio">
+            <article class="fade" id="cffm">
+                <a class="thumbnail" href="about-cffm.html" aria-label="Read about CFFM">
+                    <img src="res/img/cffm-preview.webp" width="1000" height="562"
+                        alt="CFFM terminal file manager showing directory listings and a file preview" loading="lazy">
+                </a>
+                <div>
+                    <h2>CFFM</h2>
+                    <p>Console-Friendly File Manager</p>
+                    <div class="links">
+                        <a class="link" href="about-cffm.html">About &amp; manual <span aria-hidden="true">↗</span></a>
+                        <a class="link" href="https://www.github.com/pointerisnull/cffm">Source Code <span
+                                aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </article>
 
-        <div class="project">
-            <img src="res/img/medwheel.png" alt="Medwheel">
-            <div class="project-info">
-                <h2>MedWheel</h2>
-                <p>
-                Medicine Cabinet for the Disadvantaged
-                </p>
-                <p>
-                & Startup Company
-                </p>
-            </div>
-            <div class="links-container">
-                <a href="https://www.linkedin.com/posts/b-haney_a-few-short-weeks-ago-i-had-the-incredible-activity-7267216351834861568-TltP"><i class="fa-solid fa-bullhorn"></i> Reveal</a>
-                <a href="https://devpost.com/software/mediwheel"><i class="fa-solid fa-book-open"></i> About</a>
-                <a href="https://www.github.com/pointerisnull/medwheel"><i class="fa-solid fa-code"></i> Source Code</a>
-            </div>
+            <article class="fade" id="space-spotter">
+                <a class="thumbnail" href="about-ss.html" aria-label="Read about Space Spotter">
+                    <img src="res/img/ss-preview.webp" width="1000" height="562"
+                        alt="Aerial view of parked cars in a parking lot" loading="lazy">
+                </a>
+                <div>
+                    <h2>Space Spotter</h2>
+                    <p>1st Place Hackathon Winner</p>
+                    <div class="links">
+                        <a class="link" href="about-ss.html">About <span aria-hidden="true">↗</span></a>
+                        <a class="link" href="https://devpost.com/software/space-spotter">Project Page <span
+                                aria-hidden="true">↗</span></a>
+                        <a class="link" href="https://github.com/pointerisnull/SpaceSpotter">Personal Source Code
+                            <span aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </article>
+
         </div>
-        
-        <div class="project">
-            <img src="res/img/temp-phys.jpg" alt="Project 4">
-            <div class="project-info">
-                <h2>Physîsîm</h2>
-                <p>
-                OpenGl Physics Engine Utilizing Custom
-                </p>
-                <p>
-                Language & Interpreter
-                </p>
-            </div>
-            <div class="links-container">
-                <a href="res/doc/physisim-whitepaper.pdf"><i class="fa-solid fa-book-open"></i> About</a>
-                <a href="https://www.github.com/pointerisnull/physisim"><i class="fa-solid fa-code"></i> Source Code</a>
-            </div>
-        </div>
-                   
-        <div class="project">
-            <img src="res/img/cffm.png" alt="CFFM">
-            <div class="project-info">
-                <h2>CFFM</h2>
-                <p>
-                Console-Friendly File Manager
-                </p>
-            </div>
-            <div class="links-container">
-                <a href="about-cffm.html"><i class="fa-solid fa-book-open"></i> About</a>
-                <a href="https://www.github.com/pointerisnull/cffm"><i class="fa-solid fa-code"></i> Source Code</a>
-            </div>
-        </div>
-         
-        <div class="project">
-            <img src="res/img/ss.jpg" alt="SS">
-            <div class="project-info">
-                <h2>Space Spotter</h2>
-                <p>
-                1st Place Hackathon Winner
-                </p>
-            </div>
-            <div class="links-container">
-                <a href="about-ss.html"><i class="fa-solid fa-book-open"></i> About</a>
-                <a href="https://devpost.com/software/space-spotter"><i class="fa-solid fa-car"></i> Project Page</a>
-                <a href="https://github.com/pointerisnull/SpaceSpotter"><i class="fa-solid fa-code"></i> Personal Source Code</a>
-            </div>
-        </div>
+    </main>
 
-    </div>
-
-</div>
-
+    <footer class="footer">
+        <p>2026 bhaney.net</p>
+    </footer>
 </body>
 
 </html>

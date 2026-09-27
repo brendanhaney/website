@@ -1,98 +1,186 @@
-@import url('root.css');
-@import url('elements.css');
-
-/* ELEMENT BOUNCE */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-    40% {transform: translateY(-10px);}
-    60% {transform: translateY(-5px);}
+@view-transition {
+    navigation: auto;
 }
 
-.btn {
-    transition: transform 0.2s;
+:root {
+    view-transition-name: root;
+    --page-enter-x: 100%;
+    --page-exit-x: -100%;
+    --page-enter-animation: page-slide-in;
+    --page-exit-animation: page-slide-out;
 }
 
-.btn:hover { 
-	transform: scale(1.05); 
-	box-shadow: 0 0 var(--s-sm) var(--shadow); 
+html:has(> body.home) {
+    --page-enter-x: -100%;
+    --page-exit-x: 100%;
 }
 
-/* SCROLL ANIMATION */
-.reveal {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+html:has(> body.project-page) {
+    --page-enter-animation: page-fade-in;
+    --page-exit-animation: page-fade-out;
 }
 
-@supports (animation-timeline: view()) {
-    .reveal {
-        opacity: 0;
-        transform: translateY(50px) scale(0.95);
-
-        animation: reveal-up linear forwards;
-        animation-timeline: view();
-        animation-range: entry 5% contain 30%; 
-    }
+main {
+    animation-duration: var(--duration-page);
+    animation-timing-function: var(--ease-glass);
+    transition-duration: var(--duration-control);
+    transition-property: none;
 }
 
-@keyframes reveal-up {
-    to { 
-        opacity: 1; 
-        transform: translateY(0) scale(1); 
-    }
-}
-
-/* TOPNAV */
 .topnav {
-    transform: translateY(-100%);
-    animation: slide-down-nav linear forwards;
-    animation-timeline: scroll();
-    animation-range: 0vh 110vh;
+    view-transition-name: site-nav;
 }
 
-@keyframes slide-down-nav {
-  0%, 75% { 
-    transform: translateY(-100%); 
-    opacity: 0;
-  }
-  100% { 
-    transform: translateY(0); 
+html.js-pages,
+.js-pages .topnav {
+    view-transition-name: none;
+}
+
+.js-pages main,
+.js-pages .footer {
+    animation-name: var(--page-enter-animation);
+    animation-duration: var(--duration-page);
+    animation-timing-function: var(--ease-glass);
+    animation-fill-mode: backwards;
+}
+
+::view-transition {
+    overflow: clip;
+}
+
+::view-transition-group(root) {
+    animation: none;
+    z-index: 0;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    height: auto;
+    object-fit: none;
+    object-position: left top;
+    mix-blend-mode: normal;
     opacity: 1;
-  }
+    animation-duration: var(--duration-page);
+    animation-timing-function: var(--ease-glass);
+    animation-fill-mode: both;
 }
 
-/* HERO */
-.hero-zoom {
+::view-transition-old(root) {
+    animation-name: var(--page-exit-animation);
+}
+
+::view-transition-new(root) {
+    animation-name: var(--page-enter-animation);
+}
+
+::view-transition-group(site-nav) {
+    animation: none;
+    z-index: 5;
+    border-radius: var(--glass-radius);
+    clip-path: inset(0 round var(--glass-radius));
+}
+
+::view-transition-old(site-nav),
+::view-transition-new(site-nav) {
+    height: auto;
+    animation: none;
     opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
+    mix-blend-mode: normal;
 }
 
-@supports (animation-timeline: view()) {
-    .hero-zoom {
-        animation: hero-fade linear forwards;
-        animation-timeline: view();
-        animation-range: exit 0% exit 100%;
+::view-transition-old(site-nav) {
+    display: none;
+}
+
+::view-transition-old(site-nav):only-child {
+    display: block;
+}
+
+@keyframes page-slide-in {
+    from {
+        transform: translateX(var(--page-enter-x));
+    }
+
+    to {
+        transform: translateX(0);
     }
 }
 
-@keyframes hero-fade {
-    to { 
-        opacity: 0; 
-        transform: scale(2.5); 
-        filter: blur(10px); 
+@keyframes page-slide-out {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(var(--page-exit-x));
     }
 }
 
-/* PROGRESS BAR */
-@keyframes grow-progress {
-    from { transform: scaleX(0); }
-    to { transform: scaleX(1); }
+@keyframes page-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    75%,
+    to {
+        opacity: 1;
+    }
 }
 
-/* TIMELINE */
-.timeline-item {
-    opacity: 0;
-    animation: reveal-up linear forwards;
-    animation-timeline: view();
-    animation-range: entry 10% cover 30%;
+@keyframes page-fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+html.page-moving,
+html.page-moving body {
+    overflow-x: clip;
+}
+
+.reveal.tracked,
+.fade.tracked {
+    opacity: var(--reveal-opacity, 1);
+}
+
+.reveal.tracked {
+    transform: translateY(var(--reveal-y, 0px));
+}
+
+.reveal:focus-within,
+.fade:focus-within {
+    opacity: 1;
+    transform: none;
+}
+
+@media screen and (width > 640px) {
+    .topnav {
+        transition: opacity var(--duration-glass),
+            transform var(--duration-glass) var(--ease-glass);
+    }
+
+    .topnav.hidden:not(:focus-within) {
+        opacity: 0;
+        transform: translateY(calc(-100% - var(--header-height)));
+        pointer-events: none;
+    }
+}
+
+@media print {
+
+    .js-pages main,
+    .js-pages .footer {
+        animation: none;
+    }
+
+    .reveal,
+    .fade {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none;
+    }
 }

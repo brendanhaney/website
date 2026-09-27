@@ -1,0 +1,168 @@
+.glass {
+    --liquid-depth: var(--s-lg);
+    --liquid-refraction: calc(var(--s-xxl) + var(--s-sm));
+    --liquid-dispersion: var(--border-width);
+    --liquid-blur: var(--s-xxs);
+    /* Lower values dim the backdrop without dimming text or images inside the glass. */
+    --liquid-brightness: 0.35;
+    --liquid-rim: var(--border-width);
+    --liquid-edge: rgb(255 255 255 / 0.28);
+    --liquid-card: color-mix(in srgb, var(--secondary) 24%, transparent);
+    --liquid-control: color-mix(in srgb, var(--secondary) 70%, white);
+    --liquid-pill: color-mix(in srgb, var(--liquid-control) 28%, transparent);
+    --liquid-hover: color-mix(in srgb, color-mix(in srgb, var(--secondary) 50%, white) 38%, transparent);
+    --liquid-selected: color-mix(in srgb, var(--liquid-control) 14%, transparent);
+    --liquid-shadow: 0 var(--s-xxxs) var(--s-sm) rgb(0 0 0 / 0.16);
+    --liquid-scrim: rgb(15 18 16 / 0.68);
+    --hero-overlay: var(--liquid-scrim);
+    --glass-reflection: none;
+    --glass-shadow: none;
+    --glass-shadow-raised: none;
+}
+
+@media (prefers-color-scheme: light) {
+    .glass {
+        --liquid-brightness: 1;
+        --liquid-edge: rgb(37 41 35 / 0.22);
+        --liquid-scrim: rgb(239 239 232 / 0.82);
+    }
+}
+
+.glass .background::after {
+    background: var(--liquid-scrim);
+}
+
+.glass :is(.topnav, .button, .popup, .close) {
+    background: transparent;
+    border-width: var(--liquid-rim);
+    border-color: var(--liquid-edge);
+    color: var(--text-main);
+    box-shadow: var(--liquid-shadow);
+    text-shadow: none;
+    -webkit-backdrop-filter: var(--lens, blur(0px)) saturate(1.15) brightness(var(--liquid-brightness)) blur(var(--liquid-blur));
+    backdrop-filter: var(--lens, blur(0px)) saturate(1.15) brightness(var(--liquid-brightness)) blur(var(--liquid-blur));
+}
+
+.glass :is(.topnav, .button, .popup, .close)::before,
+.glass :is(.topnav, .button, .popup, .close)::after {
+    content: none;
+    display: none;
+    background: none;
+    box-shadow: none;
+}
+
+.glass :is(.topnav, .button, .close) {
+    background: var(--liquid-pill);
+}
+
+.glass :is(.button, .close):is(:hover, :focus-visible) {
+    background: var(--liquid-hover);
+    border-color: var(--liquid-edge);
+    box-shadow: var(--liquid-shadow);
+}
+
+.glass :is(.button, .close):active {
+    box-shadow: var(--liquid-shadow);
+}
+
+.glass .topnav nav {
+    background: transparent;
+    border-width: var(--liquid-rim);
+    border-color: var(--liquid-edge);
+    box-shadow: none;
+}
+
+.glass .topnav nav :is(a, p) {
+    background: transparent;
+    box-shadow: none;
+}
+
+.glass .topnav nav [aria-current] {
+    background: var(--liquid-selected);
+    border-color: var(--liquid-edge);
+}
+
+.glass .topnav nav a:is(:hover, :focus-visible) {
+    background: var(--liquid-hover);
+    border-color: var(--liquid-edge);
+    box-shadow: none;
+}
+
+.glass .popup {
+    background: var(--liquid-card);
+}
+
+.glass .popup :is(p, figcaption) {
+    color: inherit;
+}
+
+.glass .popup .image {
+    background: transparent;
+}
+
+.glass .popup .close {
+    --lens: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+    .glass {
+        --liquid-card: var(--glass-dark-solid);
+        --liquid-pill: var(--glass-light-solid);
+        --liquid-hover: var(--glass-light-solid);
+        --liquid-selected: transparent;
+        --liquid-edge: var(--text-dim);
+        --liquid-shadow: none;
+    }
+
+    .glass :is(.topnav, .button, .popup, .close) {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
+    .glass :is(.topnav, .button, .close) {
+        color: var(--ink);
+    }
+
+}
+
+@media (forced-colors: active) {
+    .glass {
+        --liquid-pill: Canvas;
+        --liquid-hover: Canvas;
+        --liquid-selected: Canvas;
+        --liquid-edge: ButtonText;
+        --liquid-shadow: none;
+    }
+
+    .glass :is(.topnav, .button, .popup, .close) {
+        color: CanvasText;
+        background: Canvas;
+        border-color: ButtonText;
+        box-shadow: none;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+}
+
+@media print {
+    .glass {
+        --liquid-card: transparent;
+        --liquid-pill: transparent;
+        --liquid-hover: transparent;
+        --liquid-selected: transparent;
+        --liquid-shadow: none;
+    }
+
+    .glass :is(.topnav, .button, .popup, .close) {
+        background: none;
+        box-shadow: none;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
+    .glass .background::after {
+        background: none;
+    }
+}
