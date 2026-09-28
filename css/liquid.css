@@ -1,7 +1,4 @@
 .glass {
-    --liquid-depth: var(--s-lg);
-    --liquid-refraction: calc(var(--s-xxl) + var(--s-sm));
-    --liquid-dispersion: var(--border-width);
     --liquid-blur: var(--s-xxs);
     /* Lower values dim the backdrop without dimming text or images inside the glass. */
     --liquid-brightness: 0.35;
@@ -30,6 +27,33 @@
 
 .glass .background::after {
     background: var(--liquid-scrim);
+}
+
+/* Keep the former Chromium-only refraction boundary without JavaScript.
+   Parsing url() alone does not establish that SVG backdrop filters render.
+   Other engines retain the CSS blur, brightness and tint below. */
+@supports (-webkit-app-region: no-drag) and (backdrop-filter: url("#lens")) {
+    .glass .topnav {
+        --lens: var(--lens-nav);
+    }
+
+    .glass .button {
+        --lens: var(--lens-pill);
+    }
+
+    .glass .popup {
+        --lens: var(--lens-card);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .glass .topnav:has(a:active) {
+            --lens: var(--lens-nav-pressed);
+        }
+
+        .glass .button:active {
+            --lens: var(--lens-pill-pressed);
+        }
+    }
 }
 
 .glass :is(.topnav, .button, .popup, .close) {

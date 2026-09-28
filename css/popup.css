@@ -28,10 +28,6 @@
     text-decoration-thickness: var(--border-strong);
 }
 
-html.popup-open {
-    overflow: hidden;
-}
-
 html:has(.popup:modal) {
     overflow: hidden;
 }
@@ -54,12 +50,16 @@ html:has(.popup:modal) {
     background-color: var(--glass-dark-solid);
     background-image: var(--glass-reflection);
     box-shadow: var(--glass-shadow-raised);
-    opacity: 1;
+    opacity: 0;
     transition: opacity var(--duration-glass) ease;
+    transition: opacity var(--duration-glass) ease,
+        display var(--duration-glass) allow-discrete,
+        overlay var(--duration-glass) allow-discrete;
 }
 
 .popup[open] {
     display: flex;
+    opacity: 1;
 }
 
 .popup:not([open]) {
@@ -72,13 +72,22 @@ html:has(.popup:modal) {
 
 .popup::backdrop {
     background: var(--popup-backdrop);
-    opacity: 1;
+    opacity: 0;
     transition: opacity var(--duration-glass) ease;
+    transition: opacity var(--duration-glass) ease,
+        display var(--duration-glass) allow-discrete,
+        overlay var(--duration-glass) allow-discrete;
 }
 
-.popup.fading,
-.popup.fading::backdrop {
-    opacity: 0;
+.popup[open]::backdrop {
+    opacity: 1;
+}
+
+@starting-style {
+    .popup[open],
+    .popup[open]::backdrop {
+        opacity: 0;
+    }
 }
 
 .popup .toolbar {
@@ -163,11 +172,18 @@ html:has(.popup:modal) {
     height: 100%;
     object-fit: contain;
     opacity: 1;
-    transition: opacity var(--duration-glass) ease;
+    /* Keep the full-size frame in place while the card fades in first. */
+    animation: popup-image-in var(--duration-glass) ease var(--duration-glass) backwards;
 }
 
-.image-popup .image.loading img {
-    opacity: 0;
+@keyframes popup-image-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .image-popup figure figcaption {
@@ -234,10 +250,6 @@ html:has(.popup:modal) {
 }
 
 @media print {
-    html.popup-open {
-        overflow: visible;
-    }
-
     html:has(.popup:modal) {
         overflow: visible;
     }
@@ -247,5 +259,9 @@ html:has(.popup:modal) {
     .popup::backdrop {
         display: none;
         transition: none;
+    }
+
+    .image-popup .image img {
+        animation: none;
     }
 }

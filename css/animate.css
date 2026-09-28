@@ -5,43 +5,19 @@
 :root {
     view-transition-name: root;
     --page-enter-x: 100%;
-    --page-exit-x: -100%;
     --page-enter-animation: page-slide-in;
-    --page-exit-animation: page-slide-out;
 }
 
 html:has(> body.home) {
     --page-enter-x: -100%;
-    --page-exit-x: 100%;
 }
 
 html:has(> body.project-page) {
     --page-enter-animation: page-fade-in;
-    --page-exit-animation: page-fade-out;
-}
-
-main {
-    animation-duration: var(--duration-page);
-    animation-timing-function: var(--ease-glass);
-    transition-duration: var(--duration-control);
-    transition-property: none;
 }
 
 .topnav {
     view-transition-name: site-nav;
-}
-
-html.js-pages,
-.js-pages .topnav {
-    view-transition-name: none;
-}
-
-.js-pages main,
-.js-pages .footer {
-    animation-name: var(--page-enter-animation);
-    animation-duration: var(--duration-page);
-    animation-timing-function: var(--ease-glass);
-    animation-fill-mode: backwards;
 }
 
 ::view-transition {
@@ -66,10 +42,14 @@ html.js-pages,
 }
 
 ::view-transition-old(root) {
-    animation-name: var(--page-exit-animation);
+    /* Fade in place beneath the incoming page for the full transition. */
+    z-index: 0;
+    animation-name: page-fade-out;
+    animation-timing-function: linear;
 }
 
 ::view-transition-new(root) {
+    z-index: 1;
     animation-name: var(--page-enter-animation);
 }
 
@@ -106,16 +86,6 @@ html.js-pages,
     }
 }
 
-@keyframes page-slide-out {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(var(--page-exit-x));
-    }
-}
-
 @keyframes page-fade-in {
     from {
         opacity: 0;
@@ -137,50 +107,95 @@ html.js-pages,
     }
 }
 
-html.page-moving,
-html.page-moving body {
+/* Ordinary CSS entrances also work on local files and without native page transitions. */
+html,
+body {
     overflow-x: clip;
 }
 
-.reveal.tracked,
-.fade.tracked {
-    opacity: var(--reveal-opacity, 1);
+main,
+.footer {
+    animation: var(--page-enter-animation) var(--duration-page) var(--ease-glass) backwards;
 }
 
-.reveal.tracked {
-    transform: translateY(var(--reveal-y, 0px));
+/* Keep the entrance clock running beneath native snapshots so it cannot replay afterward. */
+:root:active-view-transition :is(main, .footer) {
+    transform: none !important;
+    opacity: 1 !important;
 }
 
-.reveal:focus-within,
-.fade:focus-within {
-    opacity: 1;
-    transform: none;
-}
-
-@media screen and (width > 640px) {
-    .topnav {
-        transition: opacity var(--duration-glass),
-            transform var(--duration-glass) var(--ease-glass);
+/* Browsers without scroll timelines leave content visible and navigation stationary. */
+@supports (animation-timeline: view(block 0px)) and (animation-range: entry 0% exit 100%) {
+    .reveal,
+    .fade {
+        --reveal-lift: 0px;
+        --reveal-range: min(var(--scroll-reveal-range), 33vh);
+        animation: reveal-in 1ms ease-out both,
+            reveal-out 1ms ease-in forwards;
+        animation-timeline: view(block 0px), view(block 0px);
+        animation-range: entry 0% entry var(--reveal-range),
+            exit calc(100% - var(--reveal-range)) exit 100%;
     }
 
-    .topnav.hidden:not(:focus-within) {
+    .reveal {
+        --reveal-lift: var(--scroll-reveal-offset);
+    }
+}
+
+@supports (animation-timeline: scroll(root block)) {
+    @media (width > 640px) {
+        .topnav {
+            animation: nav-scroll 1ms linear both;
+            animation-timeline: scroll(root block);
+        }
+    }
+}
+
+@keyframes reveal-in {
+    from {
+        opacity: 0;
+        transform: translateY(var(--reveal-lift));
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* No backwards fill: the exit must not override the entrance before it starts. */
+@keyframes reveal-out {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(calc(-1 * var(--reveal-lift)));
+    }
+}
+
+@keyframes nav-scroll {
+    0%, 5%, 95%, 100% {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    10%, 90% {
         opacity: 0;
         transform: translateY(calc(-100% - var(--header-height)));
         pointer-events: none;
     }
 }
 
-@media print {
-
-    .js-pages main,
-    .js-pages .footer {
-        animation: none;
-    }
-
-    .reveal,
-    .fade {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none;
-    }
+/* Keyboard navigation and fragment links always expose their destination. */
+:is(.reveal, .fade):is(:focus-within, :target, :has(:target)),
+:target :is(.reveal, .fade),
+.topnav:focus-within {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
 }
