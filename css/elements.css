@@ -229,17 +229,12 @@
     margin-bottom: var(--s-sm);
 }
 
-.jobs {
-    border-top: var(--border-width) solid var(--border);
-}
-
 .jobs>article {
     display: grid;
     grid-template-columns: calc(var(--s-lg) * 2) minmax(0, 1fr);
     align-items: start;
     gap: var(--s-lg);
     padding-block: var(--s-xl);
-    border-bottom: var(--border-width) solid var(--border);
 }
 
 .logo {
@@ -297,7 +292,7 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: start;
     gap: var(--s-xxl) var(--s-xl);
-    padding-bottom: var(--s-section);
+    padding-block: var(--s-xl) var(--s-section);
 }
 
 .projects>article {
@@ -353,7 +348,6 @@
 
 .contact section {
     padding-block: var(--s-lg);
-    border-top: var(--border-width) solid var(--border);
 }
 
 .contact h2 {
@@ -503,6 +497,7 @@
 }
 
 @media (max-width: 900px) {
+
     .spotlight,
     .projects {
         --project-image-size: var(--project-image-size-mobile);
@@ -646,7 +641,7 @@
 }
 
 @media print {
-    .home > .background {
+    .home>.background {
         display: none;
     }
 

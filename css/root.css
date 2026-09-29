@@ -173,6 +173,15 @@ h4 {
     font-weight: 700;
 }
 
+hr {
+    width: 100%;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-top: var(--border-width) solid var(--border);
+}
+
 p {
     color: var(--text-dim);
 }
