@@ -164,9 +164,11 @@ main,
 }
 
 @supports (animation-timeline: scroll(root block)) {
-    .home > .background img {
-        animation: background-scroll 1ms linear both;
-        animation-timeline: scroll(root block);
+    @media (width > 640px) and (hover: hover) and (pointer: fine) {
+        .home > .background img {
+            animation: background-scroll 1ms linear both;
+            animation-timeline: scroll(root block);
+        }
     }
 
     @media (width > 640px) {

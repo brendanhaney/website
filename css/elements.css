@@ -108,6 +108,20 @@
     background: var(--hero-overlay);
 }
 
+@media (max-width: 640px), (hover: none), (pointer: coarse) {
+    /* Scroll with the document; toolbar changes must not resize the wallpaper. */
+    .home > .background {
+        position: absolute;
+        bottom: auto;
+        height: 100vh;
+        height: 100lvh;
+    }
+
+    .home > .background img {
+        height: 100%;
+    }
+}
+
 .hero p {
     color: inherit;
 }
