@@ -9,7 +9,7 @@
     --ink: #222522;
     --border: #51554f;
     --hero-border: rgb(240 240 235 / 0.4);
-    --hero-overlay: linear-gradient(to right, rgba(26, 24, 24, 0.95), rgba(9, 12, 11, 0.64));
+    --hero-overlay: rgba(24, 24, 24, 0.8);/*linear-gradient(to right, rgba(26, 24, 24, 0.95), rgba(9, 12, 11, 0.64));*/
     --media-bg: #161817;
     --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     /* Golden ratio scale shared by typography, spacing, and element sizes. */
@@ -34,6 +34,9 @@
     --tracking-wide: var(--s-xxxs);
     --width: calc(var(--s-xxxl) * 12);
     --reading-width: calc(var(--s-xxxl) * 7);
+    /* Consistent square thumbnails across the portfolio and index highlights. */
+    --project-image-size: calc(var(--s-xxxl) * var(--golden-ratio) * var(--golden-ratio));
+    --project-image-size-mobile: var(--s-xxxl);
     --gutter: clamp(var(--s-md), 5vw, var(--s-xxl));
     --edge-inset: calc(var(--gutter) / var(--golden-ratio));
     --radius: var(--s-xxs);
@@ -42,9 +45,15 @@
     --header-height: var(--s-xxl);
     --nav-capsule-height: calc(var(--s-xl) + var(--s-xxxs) * 2 + var(--border-width) * 2);
     --header-scroll-offset: calc(var(--header-height) + var(--border-width) + var(--s-xl));
-    --duration-page: calc(300ms * var(--golden-ratio) * var(--golden-ratio));
-    --scroll-reveal-offset: var(--s-lg);
+    --duration-page: calc(300ms * var(--golden-ratio));
+    /* Background fade speed is independent of page timing; no additional start delay. */
+    --duration-background: calc(500ms * var(--golden-ratio));
+    --delay-background: 0ms;
+    --scroll-reveal-offset: var(--s-xg);
     --scroll-reveal-range: calc(var(--s-xxxl) * var(--golden-ratio));
+    /* Visible fraction of the index background's height: greater than 0, up to 1.
+       0.8 = roughly 80% visible. Higher values reduce zoom and movement; 1 stays still. */
+    --background-visible: 0.8;
     /* Glass materials and interaction settings. */
     --glass-radius: var(--s-xxl);
     --glass-blur: var(--s-xs);

@@ -90,6 +90,28 @@ html:has(.popup:modal) {
     }
 }
 
+/* Without top-layer exit transitions, keep the card rendered until its opacity
+   reaches zero. Delayed visibility then removes it from focus and hit testing. */
+@supports not (overlay: auto) {
+    .popup {
+        display: flex;
+        visibility: hidden;
+        z-index: 6;
+        transition: opacity var(--duration-glass) ease,
+            visibility 0s linear var(--duration-glass);
+    }
+
+    .popup[open] {
+        visibility: visible;
+        transition-delay: 0s;
+    }
+
+    /* Restart the image's entrance when reopening a card that stays in layout. */
+    .image-popup:not([open]) .image img {
+        animation: none;
+    }
+}
+
 .popup .toolbar {
     display: flex;
     flex-shrink: 0;

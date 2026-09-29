@@ -10,8 +10,6 @@
     --liquid-hover: color-mix(in srgb, color-mix(in srgb, var(--secondary) 50%, white) 38%, transparent);
     --liquid-selected: color-mix(in srgb, var(--liquid-control) 14%, transparent);
     --liquid-shadow: 0 var(--s-xxxs) var(--s-sm) rgb(0 0 0 / 0.16);
-    --liquid-scrim: rgb(15 18 16 / 0.68);
-    --hero-overlay: var(--liquid-scrim);
     --glass-reflection: none;
     --glass-shadow: none;
     --glass-shadow-raised: none;
@@ -21,12 +19,7 @@
     .glass {
         --liquid-brightness: 1;
         --liquid-edge: rgb(37 41 35 / 0.22);
-        --liquid-scrim: rgb(239 239 232 / 0.82);
     }
-}
-
-.glass .background::after {
-    background: var(--liquid-scrim);
 }
 
 /* Keep the former Chromium-only refraction boundary without JavaScript.

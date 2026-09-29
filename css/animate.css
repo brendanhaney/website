@@ -118,6 +118,27 @@ main,
     animation: var(--page-enter-animation) var(--duration-page) var(--ease-glass) backwards;
 }
 
+/* Start immediately on a fresh load, or resume as soon as a native transition ends.
+   The image keeps its parallax timeline; CSS timing cannot detect image readiness. */
+.home > .background {
+    animation: background-in var(--duration-background) var(--ease-glass) var(--delay-background) backwards;
+}
+
+/* Pause rather than reset: a visible outgoing wallpaper must stay visible in its snapshot. */
+:root:active-view-transition .home > .background {
+    animation-play-state: paused;
+}
+
+@keyframes background-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 /* Keep the entrance clock running beneath native snapshots so it cannot replay afterward. */
 :root:active-view-transition :is(main, .footer) {
     transform: none !important;
@@ -143,6 +164,11 @@ main,
 }
 
 @supports (animation-timeline: scroll(root block)) {
+    .home > .background img {
+        animation: background-scroll 1ms linear both;
+        animation-timeline: scroll(root block);
+    }
+
     @media (width > 640px) {
         .topnav {
             animation: nav-scroll 1ms linear both;
@@ -173,6 +199,17 @@ main,
     to {
         opacity: 0;
         transform: translateY(calc(-1 * var(--reveal-lift)));
+    }
+}
+
+/* Traverse only the hidden portion of the image over the entire page scroll. */
+@keyframes background-scroll {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(calc((var(--background-visible) - 1) * 100%));
     }
 }
 

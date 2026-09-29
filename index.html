@@ -5,16 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brendan Haney</title>
-    <link rel="stylesheet" href="css/root.css">
-    <link rel="stylesheet" href="css/elements.css">
-    <link rel="stylesheet" href="css/animate.css?v=css-3">
-    <link rel="stylesheet" href="css/glass.css">
-    <link rel="stylesheet" href="css/popup.css?v=css-2">
+    <link rel="stylesheet" href="css/root.css?v=project-layout-3">
+    <link rel="stylesheet" href="css/elements.css?v=project-grid-5">
+    <link rel="stylesheet" href="css/animate.css?v=background-fade-2">
+    <link rel="stylesheet" href="css/glass.css?v=project-links-2">
+    <link rel="stylesheet" href="css/popup.css?v=exit-3">
     <link rel="stylesheet" href="css/liquid-filters.css">
-    <link rel="stylesheet" href="css/liquid.css?v=svg">
+    <link rel="stylesheet" href="css/liquid.css?v=project-links-2">
 </head>
 
 <body class="home">
+    <div class="background" aria-hidden="true">
+        <img src="res/img/background.webp" width="1992" height="1136" alt="" fetchpriority="high">
+    </div>
     <a class="skip" href="#main">Skip to content</a>
     <header class="topnav">
         <p class="brand">bhaney.net</p>
@@ -27,9 +30,6 @@
 
     <main id="main" tabindex="-1">
         <section class="hero" aria-labelledby="intro-title">
-            <div class="background" aria-hidden="true">
-                <img src="res/img/background.webp" width="1531" height="624" alt="" fetchpriority="high">
-            </div>
             <div class="container intro">
                 <div>
                     <h1 id="intro-title">Brendan Haney</h1>
@@ -51,116 +51,125 @@
             </div>
         </section>
 
-        <section class="section container" id="work" aria-labelledby="work-title">
-            <div class="section-heading reveal">
-                <p class="eyebrow" id="work-title">Project Spotlight</p>
-                <a class="link" href="portfolio.html">All projects <span aria-hidden="true">↗</span></a>
-            </div>
-            <div class="spotlight">
-                <article class="fade">
-                    <a class="thumbnail" href="about-cffm.html" aria-label="Read about CFFM">
-                        <img src="res/img/cffm-preview.webp" width="1000" height="562"
-                            alt="CFFM terminal file manager showing directory listings and a file preview"
-                            loading="lazy">
-                    </a>
-                    <h3>CFFM</h3>
-                    <p>Console-Friendly File Manager</p>
-                    <div class="links">
-                        <a class="link" href="about-cffm.html">Project &amp; manual <span
-                                aria-hidden="true">↗</span></a>
-                        <a class="link" href="https://www.github.com/pointerisnull/cffm">Source code <span
-                                aria-hidden="true">↗</span></a>
-                    </div>
-                </article>
-                <article class="fade">
-                    <a class="thumbnail" href="https://devpost.com/software/mediwheel"
-                        aria-label="Read about MedWheel on Devpost">
-                        <img src="res/img/medwheel-preview.webp" width="806" height="495"
-                            alt="MedWheel prescription management logo" loading="lazy">
-                    </a>
-                    <h3>MedWheel</h3>
-                    <p>1st Place Hackathon Winner</p>
-                    <div class="links">
-                        <a class="link" href="https://devpost.com/software/mediwheel">Project notes <span
-                                aria-hidden="true">↗</span></a>
-                        <a class="link" href="https://www.github.com/pointerisnull/medwheel">Project source code
-                            <span aria-hidden="true">↗</span></a>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="section experience" id="experience" aria-labelledby="experience-title">
-            <div class="container columns">
-                <div class="reveal">
-                    <p class="eyebrow">Professional</p>
-                    <h2 id="experience-title">Experience</h2>
+        <div class="sections">
+            <section class="section container" id="work" aria-labelledby="work-title">
+                <div class="section-heading reveal">
+                    <p class="eyebrow" id="work-title">Project Spotlight</p>
+                    <a class="link" href="portfolio.html">All projects <span aria-hidden="true">↗</span></a>
                 </div>
-                <div class="jobs">
-                    <article class="reveal">
-                        <img class="logo" src="res/ico/hms.png" width="52" height="52" alt="" loading="lazy">
+                <div class="spotlight">
+                    <article class="fade">
+                        <a class="thumbnail" href="about-cffm.html" aria-label="Read about CFFM">
+                            <img src="res/img/cffm-logo.webp" width="1000" height="562"
+                                alt="CFFM terminal file manager showing directory listings and a file preview"
+                                loading="lazy">
+                        </a>
                         <div>
-                            <p>HMS Networks</p>
-                            <h3>
-                                <button type="button" class="role" commandfor="popup-hms" command="show-modal">Software
-                                    Engineer <i>(Internship)</i></button>
-                            </h3>
-                            <p class="date">January 2026 - August 2026</p>
+                            <h3>CFFM</h3>
+                            <p>Console-Friendly File Manager</p>
+                        </div>
+                        <div class="links">
+                            <a class="link" href="about-cffm.html">Project &amp; manual <span
+                                    aria-hidden="true">↗</span></a>
+                            <a class="link" href="https://www.github.com/pointerisnull/cffm">Source code <span
+                                    aria-hidden="true">↗</span></a>
                         </div>
                     </article>
-                    <article class="reveal">
-                        <img class="logo" src="res/ico/mrg.png" width="52" height="52" alt="" loading="lazy">
+                    <article class="fade">
+                        <a class="thumbnail" href="https://devpost.com/software/mediwheel"
+                            aria-label="Read about MedWheel on Devpost">
+                            <img src="res/img/medwheel-preview.webp" width="806" height="495"
+                                alt="MedWheel prescription management logo" loading="lazy">
+                        </a>
                         <div>
-                            <p>MRG Laboratories</p>
-                            <h3>
-                                <button type="button" class="role" commandfor="popup-mrg" command="show-modal">R&amp;D
-                                    Engineer <i>(Internship)</i></button>
-                            </h3>
-                            <p class="date">May 2025 - January 2026</p>
+                            <h3>MedWheel</h3>
+                            <p>1st Place Hackathon Winner</p>
+                        </div>
+                        <div class="links">
+                            <a class="link" href="https://devpost.com/software/mediwheel">Project notes <span
+                                    aria-hidden="true">↗</span></a>
+                            <a class="link" href="https://www.github.com/pointerisnull/medwheel">Source code
+                                <span aria-hidden="true">↗</span></a>
                         </div>
                     </article>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="section container skills columns" id="skills" aria-labelledby="skills-title">
-            <div>
-                <h2 class="reveal" id="skills-title">Skills</h2>
-                <figure class="portrait fade">
-                    <button type="button" class="preview" commandfor="popup-portrait" command="show-modal"
-                        aria-label="Enlarge portrait of Brendan Haney">
-                        <img src="res/img/pfp-small.webp" width="600" height="900" alt="Brendan Haney" loading="lazy">
-                    </button>
-                </figure>
-            </div>
-            <div>
-                <section class="reveal" aria-labelledby="electronics-title">
-                    <h3 id="electronics-title">Electronics</h3>
-                    <p>Microcontrollers and edge hardware. My favorite projects so far have involved designing circuits
-                        that respond to software outputs, reinforcing my passion in bridging the gap between software
-                        and hardware design.</p>
-                </section>
-                <section class="reveal" aria-labelledby="software-title">
-                    <h3 id="software-title">Software</h3>
-                    <p>I am fluent in C, C++, and Python, and currently learning Rust. I have about five years of
-                        programming experience <i>(with one of them being professional)</i>. Some of my personal
-                        software can be found on my <a href="portfolio.html">Portfolio</a> page.</p>
-                </section>
-                <section class="reveal" aria-labelledby="linux-title">
-                    <h3 id="linux-title">Linux</h3>
-                    <p>My operating system of choice since 2020. I am deeply familiar with all things Linux
-                        maintainence, troubleshooting, installation, configuration, shell usage, and security. This
-                        includes both desktop and serverside.</p>
-                </section>
-            </div>
-        </section>
+            <section class="section experience" id="experience" aria-labelledby="experience-title">
+                <div class="container columns">
+                    <div class="reveal">
+                        <p class="eyebrow">Professional</p>
+                        <h2 id="experience-title">Experience</h2>
+                    </div>
+                    <div class="jobs">
+                        <article class="reveal">
+                            <img class="logo" src="res/ico/hms.png" width="52" height="52" alt="" loading="lazy">
+                            <div>
+                                <p>HMS Networks</p>
+                                <h3>
+                                    <button type="button" class="role" commandfor="popup-hms" command="show-modal"
+                                        aria-haspopup="dialog">Software Engineer <i>(Internship)</i></button>
+                                </h3>
+                                <p class="date">January 2026 - August 2026</p>
+                            </div>
+                        </article>
+                        <article class="reveal">
+                            <img class="logo" src="res/ico/mrg.png" width="52" height="52" alt="" loading="lazy">
+                            <div>
+                                <p>MRG Laboratories</p>
+                                <h3>
+                                    <button type="button" class="role" commandfor="popup-mrg" command="show-modal"
+                                        aria-haspopup="dialog">R&amp;D Engineer <i>(Internship)</i></button>
+                                </h3>
+                                <p class="date">May 2025 - January 2026</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
 
-        <section class="contact-banner" aria-labelledby="contact-title">
-            <div class="container reveal">
-                <h2 id="contact-title">Get in Touch</h2>
-                <a href="contact.html">Contact Me <span aria-hidden="true">↗</span></a>
-            </div>
-        </section>
+            <section class="section container skills columns" id="skills" aria-labelledby="skills-title">
+                <div>
+                    <h2 class="reveal" id="skills-title">Skills</h2>
+                    <figure class="portrait fade">
+                        <button type="button" class="preview" commandfor="popup-portrait" command="show-modal"
+                            aria-label="Enlarge portrait of Brendan Haney">
+                            <img src="res/img/pfp-small.webp" width="600" height="900" alt="Brendan Haney"
+                                loading="lazy">
+                        </button>
+                    </figure>
+                </div>
+                <div>
+                    <section class="reveal" aria-labelledby="electronics-title">
+                        <h3 id="electronics-title">Electronics</h3>
+                        <p>Microcontrollers and edge hardware. My favorite projects so far have involved designing
+                            circuits
+                            that respond to software outputs, reinforcing my passion in bridging the gap between
+                            software
+                            and hardware design.</p>
+                    </section>
+                    <section class="reveal" aria-labelledby="software-title">
+                        <h3 id="software-title">Software</h3>
+                        <p>I am fluent in C, C++, and Python, and currently learning Rust. I have about five years of
+                            programming experience <i>(with one of them being professional)</i>. Some of my personal
+                            software can be found on my <a href="portfolio.html">Portfolio</a> page.</p>
+                    </section>
+                    <section class="reveal" aria-labelledby="linux-title">
+                        <h3 id="linux-title">Linux</h3>
+                        <p>My operating system of choice since 2020. I am deeply familiar with all things Linux
+                            maintainence, troubleshooting, installation, configuration, shell usage, and security. This
+                            includes both desktop and serverside.</p>
+                    </section>
+                </div>
+            </section>
+
+            <section class="contact-banner" aria-labelledby="contact-title">
+                <div class="container reveal">
+                    <h2 id="contact-title">Get in Touch</h2>
+                    <a href="contact.html">Contact Me <span aria-hidden="true">↗</span></a>
+                </div>
+            </section>
+        </div>
     </main>
 
     <dialog class="popup image-popup" id="popup-portrait" aria-labelledby="popup-portrait-title">
@@ -199,10 +208,13 @@
             <h2 id="popup-hms-title">HMS Networks</h2>
             <h3>Software Engineer <i>(Internship)</i></h3>
             <p class="date">January 2026 - August 2026</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua.</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat.</p>
+            <p>Secured $500K in annual revenue by implementing a customer-requested Dynamic DNS feature in Crimson
+                Software using C++</p>
+            <p>Developed full-stack client/server logic in C++ to validate and enable optional paid features</p>
+            <p>Resolved serial communication issues by analyzing hardware components and verifying proper signal
+                generation</p>
+            <p>Built a full-stack internal testing tool, developing both the Python backend and a Qt GUI</p>
+
         </div>
     </dialog>
 
