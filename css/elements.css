@@ -290,7 +290,7 @@
 
 .contact-banner {
     padding-block: var(--s-xxl);
-    background: var(--surface);
+    /*background: var(--surface);*/
 }
 
 .contact-banner .container {
@@ -441,6 +441,23 @@
     box-decoration-break: clone;
 }
 
+.prose pre {
+    margin-block: var(--s-lg);
+    padding: var(--s-md);
+    overflow-x: auto;
+    font: inherit;
+    font-size: var(--text-small);
+    background: var(--surface);
+    border: var(--border-width) solid var(--border);
+    border-radius: var(--radius);
+}
+
+.prose pre code {
+    padding: 0;
+    background: none;
+    border-radius: 0;
+}
+
 .prose figure {
     margin-block: var(--s-xl);
 }
@@ -451,10 +468,22 @@
     border-radius: var(--s-lg);
 }
 
+.prose figure iframe {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    box-sizing: border-box;
+
+    border: var(--border-width) solid var(--border);
+    border-radius: var(--s-lg);
+}
+
 .prose figcaption {
     margin-top: var(--s-sm);
     color: var(--text-dim);
     font-size: var(--text-small);
+    text-align: center;
 }
 
 .prose table {

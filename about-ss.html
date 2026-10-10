@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bhaney.net</title>
     <link rel="stylesheet" href="css/root.css">
-    <link rel="stylesheet" href="css/elements.css">
+    <link rel="stylesheet" href="css/elements.css?v=figure-captions-1">
     <link rel="stylesheet" href="css/animate.css?v=css-3">
     <link rel="stylesheet" href="css/glass.css">
     <link rel="stylesheet" href="css/popup.css?v=exit-3">
@@ -106,9 +106,7 @@
                     <figure class="fade">
                         <button type="button" class="preview" commandfor="ss-web-interface-preview" command="show-modal"
                             aria-label="Enlarge Space Spotter web interface">
-                            <img src="res/img/ss-web.jpg"
-                                alt="Space Spotter web interface with red occupied spaces and green available spaces."
-                                width="806" height="495" loading="lazy">
+                            <img src="res/img/ss-web.jpg" loading="lazy">
                         </button>
                         <figcaption>API demo showing the live status of a virtual parking lot</figcaption>
                     </figure>
@@ -136,13 +134,9 @@
                         here.</p>
                     <figure class="fade">
                         <button type="button" class="preview" commandfor="ss-control-software-preview"
-                            command="show-modal" aria-label="Enlarge Space Spotter control software demonstration">
-                            <img src="res/img/motherboard.jpg"
-                                alt="Laptop running the Space Spotter control software during the hardware demonstration."
-                                width="1914" height="1177" loading="lazy">
+                            command="show-modal">
+                            <img src="res/img/motherboard.jpg" loading="lazy">
                         </button>
-                        <figcaption>This is a horrible picture of the &#x27;motherboard&#x27; listening for updates from
-                            hardware.</figcaption>
                     </figure>
                 </section>
 
@@ -159,11 +153,8 @@
                         lot's curb stop instead of putting them flat on the ground or building poles to attach them to.
                     </p>
                     <figure class="fade">
-                        <button type="button" class="preview" commandfor="ss-hardware-preview" command="show-modal"
-                            aria-label="Enlarge Space Spotter parking lot model">
-                            <img src="res/img/ss-hw-prop.jpg"
-                                alt="Parking lot model with cardboard cars, ultrasonic sensors, and wiring to an Arduino Uno."
-                                width="948" height="567" loading="lazy">
+                        <button type="button" class="preview" commandfor="ss-hardware-preview" command="show-modal">
+                            <img src="res/img/ss-hw-prop.jpg" loading="lazy">
                         </button>
                     </figure>
                 </section>
@@ -178,6 +169,12 @@
                         could be used to improve self driving cars.</p>
                 </section>
             </article>
+            <div class="links">
+                <a class="button" href="https://devpost.com/software/space-spotter">Project Page <span
+                        aria-hidden="true">↗</span></a>
+                <a class="button" href="https://github.com/pointerisnull/SpaceSpotter">Personal Source Code
+                    <span aria-hidden="true">↗</span></a>
+            </div>
         </div>
     </main>
 
@@ -197,7 +194,6 @@
                     <img src="res/img/ss-logo.jpg" alt="Space Spotter project logo." width="806" height="527"
                         loading="lazy" decoding="async">
                 </div>
-                <figcaption id="ss-logo-preview-caption">Space Spotter project logo.</figcaption>
             </figure>
         </div>
     </dialog>
@@ -270,7 +266,10 @@
                     and wiring to an Arduino Uno.</figcaption>
             </figure>
         </div>
+
     </dialog>
+
+
 
     <footer class="footer">
         <p>2026 bhaney.net</p>

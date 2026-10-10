@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bhaney.net</title>
+    <title>Physisim | bhaney.net</title>
+    <meta name="description" content="Physisim: a physics simulator and custom scripting language for defining particles, forces, and timed interactions.">
     <link rel="stylesheet" href="css/root.css">
-    <link rel="stylesheet" href="css/elements.css">
+    <link rel="stylesheet" href="css/elements.css?v=figure-captions-1">
     <link rel="stylesheet" href="css/animate.css?v=css-3">
     <link rel="stylesheet" href="css/glass.css">
     <link rel="stylesheet" href="css/popup.css?v=exit-3">
@@ -36,215 +37,249 @@
         <div class="container article">
             <nav class="contents" aria-label="On this page">
                 <a href="#about">About</a>
-                <a href="#philosophy">Philosophy</a>
-                <a href="#release">What's new</a>
-                <a href="#manual">User manual</a>
-                <a href="#configuration">Configuration</a>
-                <a href="#runtime">Runtime options</a>
+                <a href="#motivation">Motivation</a>
+                <a href="#physiscript">Physiscript</a>
+                <a href="#interpreter">The interpreter</a>
+                <a href="#engine">Physics engine</a>
+                <a href="#examples">Examples</a>
+                <a href="#resources">Source and whitepaper</a>
             </nav>
 
             <article class="prose">
-                <p class="note">This page also contains CFFM documentation.</p>
 
                 <section id="about">
                     <h2 class="reveal">About</h2>
-                    <p class="reveal">CFFM is a minimalist terminal-based file manager. Heavily inspired by similar
-                        terminal based file managers such as <code>ranger</code> and <code>lf</code>, CFFM seeks to
-                        provide a clean, snappy, and customizable file managing experience while adherign to a
-                        minimalist, Unix-like philosophy.</p>
-                    <p class="reveal">You can browse and manage files without moving your hands from the keyboard...</p>
-                    <figure class="fade">
-                        <button type="button" class="preview" commandfor="physics-file-manager-preview"
-                            command="show-modal" aria-label="Enlarge CFFM file manager screenshot">
-                            <img src="res/img/cffm-preview.webp"
-                                alt="CFFM showing a directory tree, file list, and C source preview." width="1000"
-                                height="562" loading="lazy">
-                        </button>
-                    </figure>
-                </section>
+                    <p class="reveal">Physisim (Physics-Simulator) is a simple graphical physics simulator with its 
+						own interpreted scripting language, Physiscript. You define particles, their properties, and 
+						the forces acting on them in a script file (.psim), and the engine reads those instructions 
+						and builds a live simulation.
+					</p>
 
-                <section class="reveal" id="philosophy">
-                    <h2>Philosophy</h2>
-                    <p>CFFM's design philosophy was inspired heavily by the <a href="https://suckless.org/philosophy/">
-                            Suckless Philosophy</a>. Whether or not experienced hackers would consider CFFM truely
-                        "Suckless" or "KISS" is debatable, however one thing is for sure, and that is that CFFM is
-                        minimalist and not bloated. I have been using <code>ranger</code> for about a year now, and I
-                        couldn't help but notice that it was lagging behind and sometimes not responsive. This is
-                        because it was written in python, and was calling external scripts to execute commands. I was
-                        interested switching to the file manager <code>lf</code>, however it too used external
-                        configuration files and building it required installing golang. I always liked Suckless'
-                        <code>dwm</code> and <code>st</code> due to their configuration being compiled directly into the
-                        program, as well as for the fact that they are extremely portable and light programs. So, I
-                        decided to write my own terminal file manager, with simplicity and portability in mind.</p>
-                </section>
-
-                <section id="release">
-                    <h2 class="reveal">What's New [v1.0]</h2>
-                    <ul class="reveal">
-                        <li>After being in development for two months (on and off), CFFM is officially released, with
-                            all of it's basic functionality tested and working.</li>
-                        <li>Added cut/copy/paste and selection functionality.</li>
-                        <li>Fixed file previews.</li>
-                        <li>Various bug fixes.</li>
-                    </ul>
                     <figure class="fade">
-                        <button type="button" class="preview" commandfor="physics-file-browsing-preview"
-                            command="show-modal" aria-label="Enlarge CFFM file browsing demonstration">
-                            <img src="res/img/cffm-useage-preview.webp"
-                                alt="Still frame from the CFFM file browsing demonstration." width="1348" height="717"
+                        <button type="button" class="preview" commandfor="physics-pool-setup-preview"
+                            command="show-modal">
+                            <img src="res/img/physisim-pool-setup.png"
+                                alt="One circular particle facing a triangular arrangement of ten particles on the simulation grid."
                                 loading="lazy">
                         </button>
+                        <figcaption>An example pool table.</figcaption>
                     </figure>
+
                 </section>
 
-                <section class="reveal" id="manual">
-                    <h2>User Manual</h2>
-                    <h3>Download</h3>
-                    <p>You can download a static &quot;just works&quot; binary from the <a
-                            href="https://github.com/pointerisnull/cffm/releases">releases section on Github</a>.</p>
-                    <h3>Self-Compilation</h3>
-                    <p>Most of the important work is taken care of in the Makefile. All you have to do is give the right
-                        command.</p>
-                    <h4>Dependencies:</h4>
-                    <ul>
-                        <li>'libncurses-dev' (Debian)</li>
-                    </ul>
-                    <h4>Compiling:</h4>
-                    <ul>
-                        <li><code>make</code> for a slim, dynamically linked binary.</li>
-                        <li><code>make release</code> for a static binary.</li>
-                    </ul>
-                    <h4>Installing:</h4>
-                    <ul>
-                        <li><code>make install</code></li>
-                    </ul>
-                    <h4>Uninstalling CFFM</h4>
-                    <ul>
-                        <li><code>make uninstall</code></li>
-                    </ul>
-                    <p>OR</p>
-                    <ul>
-                        <li><code>sudo rm /bin/cffm</code></li>
-                    </ul>
-                    <table>
-                        <caption>Default Configuration</caption>
+                <section class="reveal" id="motivation">
+                    <h2>Motivation</h2>
+                    <p class="reveal">
+						Back in the fall of 2024, I was taking a class on programming language design. 
+						Simultaneously, I was taking one of the required engineering physics classes required
+						for my degree. I had always thought it would be helpful to watch physics homework problems 
+						play out live, in order to better understand them. I was already working on a scripting 
+						language for my design class, but at the time it had no real use. I decided to repurpose 
+						it and create what is now Physisim.
+					</p>
+					<p class="reveal">
+						The logic behind Physiscript was to use the same 'homework' format that I was already
+						familiar with (given x, find y). This format describes objects, their properties, and
+                    	specifies what should happen to them at certain time offsets. Physiscript follows that 
+						same structure.
+					</p>
+                    <p class="reveal">
+						In order to make this work, I also had to build a (simple) physics engine, with a graphical
+						display. This program was probably the first one I built with a dedicated clock (tick).
+					</p>
+                </section>
+
+                <section id="physiscript">
+                    <h2 class="reveal">Writing Physiscript</h2>
+                    <p class="reveal">Physiscript is designed to read like the description of a physics problem.
+                        For example, <code>PARTICLE obj1</code> declares a particle, and <code>obj1 MASS 14</code> 
+						gives it a mass of 14 kilograms. A force is declared in the same way, using 
+						<code>FORCE</code>.</p>
+                    <p class="reveal">Vector values are written as <code>(x, y)</code>. For example,
+					<code>f1 MAG (-2.3, 7.9)</code> sets the components of a force. <i>Numerical values assume
+						base units.</i></p>
+
+                    <table class="reveal">
                         <thead>
                             <tr>
-                                <th scope="col">Key</th>
-                                <th scope="col">Function</th>
+                                <th scope="col">Syntax</th>
+                                <th scope="col">Meaning</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row"><kbd>H</kbd></th>
-                                <td>Move up a directory</td>
+                                <th scope="row"><code>PARTICLE</code></th>
+                                <td>Declare a particle with a name</td>
                             </tr>
                             <tr>
-                                <th scope="row"><kbd>L</kbd></th>
-                                <td>Change into directory / open file</td>
+                                <th scope="row"><code>FORCE</code></th>
+                                <td>Declare a named force vector</td>
                             </tr>
                             <tr>
-                                <th scope="row"><kbd>J</kbd></th>
-                                <td>Move Cursor down file list</td>
+                                <th scope="row"><code>MASS</code></th>
+                                <td>Set a particle's mass</td>
                             </tr>
                             <tr>
-                                <th scope="row"><kbd>K</kbd></th>
-                                <td>Move Cursor up file list</td>
+                                <th scope="row"><code>RADIUS</code></th>
+                                <td>Set a particle's radius</td>
                             </tr>
                             <tr>
-                                <th scope="row"><kbd>Q</kbd></th>
-                                <td>Quit CFFM</td>
+                                <th scope="row"><code>DENSITY</code></th>
+                                <td>Set a particle's density</td>
                             </tr>
                             <tr>
-                                <th scope="row"><kbd>:</kbd></th>
-                                <td>Execute shell command</td>
+                                <th scope="row"><code>ELASTICITY</code></th>
+                                <td>Set a particle's bounciness</td>
                             </tr>
                             <tr>
-                                <th scope="row"><kbd>T</kbd></th>
-                                <td>Rename File <br>(bulk rename coming soon)</td>
+                                <th scope="row"><code>POS</code></th>
+                                <td>Set a particle's (x, y) position</td>
                             </tr>
                             <tr>
-                                <th scope="row"><kbd>Space</kbd></th>
-                                <td>Select File(s)<br>(single select)</td>
+                                <th scope="row"><code>MAG</code></th>
+                                <td>Set the (x, y) components for a declared force.</td>
                             </tr>
                             <tr>
-                                <th scope="row"><kbd>V</kbd></th>
-                                <td>Visual Mode <br>(drag select)</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><kbd>X</kbd></th>
-                                <td>Cut selected</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><kbd>Y</kbd></th>
-                                <td>Copy selected</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><kbd>P</kbd></th>
-                                <td>Paste</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><kbd>D</kbd></th>
-                                <td>Delete selected</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><kbd>R</kbd></th>
-                                <td>Toggle hidden files</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><kbd>B</kbd></th>
-                                <td>Toggle border</td>
+                                <th scope="row"><code>APPLY</code></th>
+                                <td>Schedule a force to be applied at (@) time, in seconds.</td>
                             </tr>
                         </tbody>
                     </table>
+
+                    <p class="reveal">With an object and force defined, <code>APPLY f1 obj1 @ 10</code> reads
+                        exactly as “apply f1 to obj1 at ten seconds.” The interpreter records that
+                        event for the engine to apply after the specified time delta ellipses.</p>
                 </section>
 
-                <section id="configuration">
-                    <h2 class="reveal">Configuration</h2>
-                    <p class="reveal">To configure CFFM, locate the file <code>config.h</code> in the source code you
-                        downloaded above.</p>
-                    <p class="reveal">You can modify any <code>#define</code> value in to your liking. This should look
-                        familiar to anyone who has used <a href="https://dwm.suckless.org/">DWM</a>, or similar
-                        software. When done, simply re-compile using the above steps and run.</p>
+                <section id="interpreter">
+                    <h2 class="reveal">Physiscript Interpreter</h2>
+
+                    <p class="reveal">The interpreter starts by reading the script into a buffer. A lexer
+                        splits it into tokens using spaces, newlines, and tabs. Those tokens are then stored
+                        in a dictionary and encoded as integer indexes.</p>
+
+                    <p class="reveal">Execution happens  via the Current-Operation Next-Operation (CONO) table. 
+						As the interpreter walks through encoded tokens, it pairs operations, and looks up the 
+						action it should perform in the CONO table.
+					</p>
+
+                </section>
+
+                <section id="engine">
+                    <h2 class="reveal">Physics Engine</h2>
+                    <p class="reveal">The engine manages elapsed time, checks scheduled events, and advances
+                        the simulation. At the moment, only circular particles have been implemented.</p>
+                    <h3 class="reveal">Collisions</h3>
+                    <p class="reveal">For particles, collision detection compares the distance
+                        between their centers with the sum of their radii. If they overlap, the handler
+                        separates them, and calculates an impulse using their components. That impulse adjusts 
+						each particle's velocity accordingly.</p>
+                </section>
+
+                <section id="examples">
+                    <h2 class="reveal">Examples</h2>
+                    <h3 class="reveal">Basic</h3>
+                    <p class="reveal">This example from the whitepaper places three particles along the
+                        same line. The middle particle, <code>c</code>, has more mass than
+						the other two. A force is scheduled on particle <code>a</code> after two seconds.</p>
+
+
+					<p class="eyebrow">example.psim</p>
+                    <pre class="reveal" role="region"><code>
+PARTICLE a
+a MASS 0.3
+a POS (200, 200)
+
+PARTICLE b
+b MASS 0.3
+b POS (400, 200)
+
+PARTICLE c
+c MASS 0.54
+c POS (300, 200)
+
+FORCE f
+f MAG (20, 0)
+
+APPLY f a @ 2
+					</code></pre>
+                    <p class="reveal">Initially, all three particles are stationary. After the force is
+                        applied, the leftmost particle moves right and strikes the middle one. It rebounds
+                        to the left, while the middle particle moves right and collides with the final
+                        particle, passing the motion along.</p>
                     <figure class="fade">
-                        <button type="button" class="preview" commandfor="physics-configuration-preview"
-                            command="show-modal" aria-label="Enlarge CFFM configuration screenshot">
-                            <img src="res/img/config.h.png"
-                                alt="CFFM config.h showing color values, settings, and key bindings." width="1339"
-                                height="720" loading="lazy">
+                        <button type="button" class="preview" commandfor="physics-collision-preview"
+                            command="show-modal" aria-label="Enlarge Physisim particle collision">
+                            <img src="res/img/physisim-collision.png"
+                                alt="Three outlined circular particles on the simulation grid after the leftmost and middle particles collide."
+                                width="721" height="481" loading="lazy">
                         </button>
+                        <figcaption>The three-particle example after the first collision.</figcaption>
                     </figure>
+
+                    <h3 class="reveal">Pool</h3>
+                    <p class="reveal">
+					The pool example from earlier is defined as such:
+					</p>
+
+					<p class="eyebrow">pool.psim</p>
+                    <pre class="reveal" role="region"><code>
+PARTICLE white
+white MASS 0.1
+white RADIUS 15
+white ELASTICITY 0.4
+white POS (100, 250)
+PARTICLE one
+one POS (300, 250)
+PARTICLE two
+two POS (340, 270)
+PARTICLE three
+three POS (340, 230)
+PARTICLE four
+four POS (380, 290)
+PARTICLE five
+five POS (380, 250)
+PARTICLE six
+six POS (380, 210)
+PARTICLE seven
+seven POS (420, 270)
+PARTICLE eight
+eight POS (420, 230)
+PARTICLE nine
+nine POS (420, 190)
+PARTICLE ten
+ten POS (420, 310)
+FORCE f
+f MAG (20, 0.3)
+APPLY f white @ 2
+					</code></pre>
+
                     <figure class="fade">
-                        <button type="button" class="preview" commandfor="physics-customization-preview"
-                            command="show-modal" aria-label="Enlarge CFFM appearance customization demonstration">
-                            <img src="res/img/cffm-custom-preview.webp"
-                                alt="Still frame from the CFFM appearance customization demonstration." width="1345"
-                                height="717" loading="lazy">
+                        <button type="button" class="preview" commandfor="physics-pool-result-preview"
+                            command="show-modal">
+                            <img src="res/img/physisim-pool-result.png" loading="lazy">
                         </button>
+                        <figcaption>The pool example after collision.</figcaption>
                     </figure>
                 </section>
 
-                <section id="runtime">
-                    <h2 class="reveal">Runtime Customization Options</h2>
-                    <p class="reveal">By default, pressing <code>b</code> allows you to show/hide the border. Of course,
-                        you can configure this to your liking in <code>config.h</code>.</p>
-                    <figure class="fade">
-                        <button type="button" class="preview" commandfor="physics-border-visibility-preview"
-                            command="show-modal" aria-label="Enlarge CFFM border visibility demonstration">
-                            <img src="res/img/borderswitch-preview.webp"
-                                alt="Still frame from the CFFM border visibility demonstration." width="1346"
-                                height="720" loading="lazy">
-                        </button>
-                    </figure>
+                <section class="reveal" id="resources">
+                    <h2>Source and Whitepaper</h2>
+                    <p>The <a href="res/doc/physisim-whitepaper.pdf">Physisim whitepaper (PDF)</a>,
+                        written December 14, 2024</time>, contains the full
+                        design, implementation, and example scripts. The screenshots
+                        on this page can be found in it's results section.</p>
+                    <p>You can also find the project source code on
+                        <a href="https://github.com/pointerisnull/physisim">GitHub</a>.</p>
                 </section>
             </article>
         </div>
     </main>
 
-    <dialog class="popup image-popup" id="physics-file-manager-preview"
-        aria-labelledby="physics-file-manager-preview-caption">
+    <dialog class="popup image-popup" id="physics-pool-setup-preview"
+        aria-labelledby="physics-pool-setup-preview-caption">
         <div class="toolbar">
-            <button type="button" class="close" commandfor="physics-file-manager-preview" command="close"
+            <button type="button" class="close" commandfor="physics-pool-setup-preview" command="close"
                 aria-label="Close image preview" autofocus>
                 <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.618"
                     stroke-linecap="round" aria-hidden="true" focusable="false">
@@ -254,19 +289,20 @@
         </div>
         <div class="content">
             <figure>
-                <div class="image" style="--image-width: 1366px; --image-ratio: 1366 / 768">
-                    <img src="res/img/cffm.png" alt="CFFM showing a directory tree, file list, and C source preview."
-                        loading="lazy" width="1366" height="768" decoding="async">
+                <div class="image" style="--image-width: 722px; --image-ratio: 722 / 482">
+                    <img src="res/img/physisim-pool-setup.png"
+                        alt="One circular particle facing a triangular arrangement of ten particles on the simulation grid."
+                        width="722" height="482" loading="lazy" decoding="async">
                 </div>
-                <figcaption id="physics-file-manager-preview-caption">CFFM file manager screenshot</figcaption>
+                <figcaption id="physics-pool-setup-preview-caption">The pool example, before the scheduled force is applied.</figcaption>
             </figure>
         </div>
     </dialog>
 
-    <dialog class="popup image-popup" id="physics-file-browsing-preview"
-        aria-labelledby="physics-file-browsing-preview-caption">
+    <dialog class="popup image-popup" id="physics-collision-preview"
+        aria-labelledby="physics-collision-preview-caption">
         <div class="toolbar">
-            <button type="button" class="close" commandfor="physics-file-browsing-preview" command="close"
+            <button type="button" class="close" commandfor="physics-collision-preview" command="close"
                 aria-label="Close image preview" autofocus>
                 <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.618"
                     stroke-linecap="round" aria-hidden="true" focusable="false">
@@ -276,19 +312,20 @@
         </div>
         <div class="content">
             <figure>
-                <div class="image" style="--image-width: 1348px; --image-ratio: 1348 / 717">
-                    <img src="res/img/cffm-useage.gif" alt="Still frame from the CFFM file browsing demonstration."
-                        loading="lazy" width="1348" height="717" decoding="async">
+                <div class="image" style="--image-width: 721px; --image-ratio: 721 / 481">
+                    <img src="res/img/physisim-collision.png"
+                        alt="Three outlined circular particles on the simulation grid after the leftmost and middle particles collide."
+                        width="721" height="481" loading="lazy" decoding="async">
                 </div>
-                <figcaption id="physics-file-browsing-preview-caption">CFFM file browsing animation</figcaption>
+                <figcaption id="physics-collision-preview-caption">The three-particle example after the first collision.</figcaption>
             </figure>
         </div>
     </dialog>
 
-    <dialog class="popup image-popup" id="physics-configuration-preview"
-        aria-labelledby="physics-configuration-preview-caption">
+    <dialog class="popup image-popup" id="physics-pool-result-preview"
+        aria-labelledby="physics-pool-result-preview-caption">
         <div class="toolbar">
-            <button type="button" class="close" commandfor="physics-configuration-preview" command="close"
+            <button type="button" class="close" commandfor="physics-pool-result-preview" command="close"
                 aria-label="Close image preview" autofocus>
                 <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.618"
                     stroke-linecap="round" aria-hidden="true" focusable="false">
@@ -298,59 +335,12 @@
         </div>
         <div class="content">
             <figure>
-                <div class="image" style="--image-width: 1339px; --image-ratio: 1339 / 720">
-                    <img src="res/img/config.h.png"
-                        alt="CFFM config.h showing color values, settings, and key bindings." width="1339" height="720"
-                        loading="lazy" decoding="async">
+                <div class="image" style="--image-width: 721px; --image-ratio: 721 / 478">
+                    <img src="res/img/physisim-pool-result.png"
+                        alt="Circular particles spread across the simulation grid after the pool arrangement breaks apart."
+                        width="721" height="478" loading="lazy" decoding="async">
                 </div>
-                <figcaption id="physics-configuration-preview-caption">CFFM config.h showing color values, settings, and
-                    key bindings.</figcaption>
-            </figure>
-        </div>
-    </dialog>
-
-    <dialog class="popup image-popup" id="physics-customization-preview"
-        aria-labelledby="physics-customization-preview-caption">
-        <div class="toolbar">
-            <button type="button" class="close" commandfor="physics-customization-preview" command="close"
-                aria-label="Close image preview" autofocus>
-                <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.618"
-                    stroke-linecap="round" aria-hidden="true" focusable="false">
-                    <path d="m6 6 12 12M18 6 6 18" />
-                </svg>
-            </button>
-        </div>
-        <div class="content">
-            <figure>
-                <div class="image" style="--image-width: 1345px; --image-ratio: 1345 / 717">
-                    <img src="res/img/cffm-custom.gif"
-                        alt="Still frame from the CFFM appearance customization demonstration." loading="lazy"
-                        width="1345" height="717" decoding="async">
-                </div>
-                <figcaption id="physics-customization-preview-caption">CFFM appearance customization animation
-                </figcaption>
-            </figure>
-        </div>
-    </dialog>
-
-    <dialog class="popup image-popup" id="physics-border-visibility-preview"
-        aria-labelledby="physics-border-visibility-preview-caption">
-        <div class="toolbar">
-            <button type="button" class="close" commandfor="physics-border-visibility-preview" command="close"
-                aria-label="Close image preview" autofocus>
-                <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.618"
-                    stroke-linecap="round" aria-hidden="true" focusable="false">
-                    <path d="m6 6 12 12M18 6 6 18" />
-                </svg>
-            </button>
-        </div>
-        <div class="content">
-            <figure>
-                <div class="image" style="--image-width: 1346px; --image-ratio: 1346 / 720">
-                    <img src="res/img/borderswitch.gif" alt="Still frame from the CFFM border visibility demonstration."
-                        loading="lazy" width="1346" height="720" decoding="async">
-                </div>
-                <figcaption id="physics-border-visibility-preview-caption">CFFM border visibility animation</figcaption>
+                <figcaption id="physics-pool-result-preview-caption">The pool example after the collision, with particles spreading across the scene.</figcaption>
             </figure>
         </div>
     </dialog>

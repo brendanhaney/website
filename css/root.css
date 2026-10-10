@@ -2,17 +2,17 @@
     color-scheme: dark;
     --bg: #202221;
     --surface: #292b2a;
-    /* Shared hue for both glass themes; cards and lighter controls derive from it. */
+
     --secondary: #dee6da;
     --text-main: #f0f0eb;
     --text-dim: #b6b9b3;
     --ink: #222522;
     --border: #51554f;
     --hero-border: rgb(240 240 235 / 0.4);
-    --hero-overlay: rgba(24, 24, 24, 0.8);/*linear-gradient(to right, rgba(26, 24, 24, 0.95), rgba(9, 12, 11, 0.64));*/
+    --hero-overlay: rgba(24, 24, 24, 0.8);
     --media-bg: #161817;
     --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    /* Golden ratio scale shared by typography, spacing, and element sizes. */
+
     --golden-ratio: 1.618;
     --s-xxxs: 0.146rem;
     --s-xxs: 0.236rem;
@@ -25,7 +25,7 @@
     --s-xxxl: 6.854rem;
     --golden-column: 2.618fr;
     --s-section: clamp(var(--s-xxl), 7vw, var(--s-xxxl));
-    /* Intermediate text sizes stay readable while using the same scale. */
+
     --text-small: calc(var(--s-md) - var(--s-xxxs));
     --text-brand: calc(var(--s-md) + var(--s-xxxs));
     --line-body: var(--golden-ratio);
@@ -34,7 +34,7 @@
     --tracking-wide: var(--s-xxxs);
     --width: calc(var(--s-xxxl) * 12);
     --reading-width: calc(var(--s-xxxl) * 7);
-    /* Consistent square thumbnails across the portfolio and index highlights. */
+
     --project-image-size: calc(var(--s-xxxl) * var(--golden-ratio) * var(--golden-ratio));
     --project-image-size-mobile: var(--s-xxxl);
     --gutter: clamp(var(--s-md), 5vw, var(--s-xxl));
@@ -46,15 +46,13 @@
     --nav-capsule-height: calc(var(--s-xl) + var(--s-xxxs) * 2 + var(--border-width) * 2);
     --header-scroll-offset: calc(var(--header-height) + var(--border-width) + var(--s-xl));
     --duration-page: calc(300ms * var(--golden-ratio));
-    /* Background fade speed is independent of page timing; no additional start delay. */
+
     --duration-background: calc(500ms * var(--golden-ratio));
     --delay-background: 0ms;
     --scroll-reveal-offset: var(--s-xg);
     --scroll-reveal-range: calc(var(--s-xxxl) * var(--golden-ratio));
-    /* Visible fraction of the index background's height: greater than 0, up to 1.
-       0.8 = roughly 80% visible. Higher values reduce zoom and movement; 1 stays still. */
     --background-visible: 0.8;
-    /* Glass materials and interaction settings. */
+
     --glass-radius: var(--s-xxl);
     --glass-blur: var(--s-xs);
     --glass-edge: rgb(255 255 255 / 0.28);

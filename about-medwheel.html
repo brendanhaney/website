@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" class="glass">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedWheel | bhaney.net</title>
+    <meta name="description"
+        content="MedWheel: a connected medication dispenser, YCP Hacks 2024 Best of Show winner, and a project in hardware and embedded programming.">
+    <link rel="stylesheet" href="css/root.css?v=separators-1">
+    <link rel="stylesheet" href="css/elements.css?v=figure-captions-1">
+    <link rel="stylesheet" href="css/animate.css?v=background-mobile-1">
+    <link rel="stylesheet" href="css/glass.css?v=project-links-2">
+    <link rel="stylesheet" href="css/popup.css?v=exit-3">
+    <link rel="stylesheet" href="css/liquid-filters.css">
+    <link rel="stylesheet" href="css/liquid.css?v=project-links-2">
+</head>
+
+<body class="project-page">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="topnav">
+        <a class="brand" href="index.html">bhaney.net</a>
+        <nav aria-label="Primary">
+            <a href="index.html">Home</a>
+            <a href="portfolio.html" aria-current="location">Portfolio</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main id="main" tabindex="-1">
+        <header class="page-header container">
+            <a class="back" href="portfolio.html">← Portfolio</a>
+            <p class="eyebrow">Project notes</p>
+            <h1>MedWheel</h1>
+        </header>
+
+        <div class="container article">
+            <nav class="contents" aria-label="On this page">
+                <a href="#about">About</a>
+                <a href="#idea">The idea</a>
+                <a href="#hacks">Part 1 - The Hackathon</a>
+                <a href="#startup">Part 2 - Startup Company</a>
+                <a href="#resources">Project links</a>
+            </nav>
+
+            <article class="prose">
+                <section id="about">
+                    <h2 class="reveal">About</h2>
+                    <p class="reveal">MedWheel was a smart medication dispenser designed to assist those who have
+                        difficulties reliably taking their medication. The prototype
+                        <a href="https://devpost.com/software/mediwheel"> won First Place</a> (overall "Best of Show")
+                        at YCP Hacks 2024. It later went on to participate in the
+                        <a href="https://www.ycp.edu/news/mcnees-accelerator-program">McNees Accelerator</a>
+                        for startup companies in early 2025, where the idea was pitched to a group of early investors.
+                        The backstory and motivation behind MedWheel was later featured in
+                        <a
+                            href="https://www.ycp.edu/news/adding-spice-success-york-college-hot-sauce-business-and-others-participate-mcnees-accelerator">York
+                            College's news article</a> on the McNees Accelerator.
+                    </p>
+                    <p class="reveal">The MedWheel was co-developed with <a href="https://baiageorgia.net">Baia
+                            Grdzelishvili</a>, Youssouf Hassan, and <a href="https://orionm.net">Orion
+                            Mulgrew.</a></p>
+                </section>
+
+                <section class="reveal" id="idea">
+                    <h2>The Idea</h2>
+
+                    <figure class="fade">
+                        <button type="button" class="preview" commandfor="medwheel-gif-preview" command="show-modal">
+                            <img src="res/img/medwheel.gif" loading="lazy">
+                        </button>
+                        <figcaption>Concept art demonstrating the MedWheel in action.</figcaption>
+                    </figure>
+
+                    <p class="reveal">
+					The core problems that we observed was that the average variety of medication is large, schedules
+                        can be erratic, and often those who are supposed to take medication often forget to do so.
+                        The motivation behind MedWheel was to make a pill dispenser which could be organized, schedule
+                        medications, and ensure that those medications were taken.
+                    </p>
+                    <p class="reveal">
+					The design features a tabletop pill dispenser (with a number of separated compartments),
+                        alongside a mobile app companion which manages medication dosage and scheduling. This app would
+                        have been available for either loved ones, caretakers, or the person taking medication
+                        themselves. The pill dispenser would have included a scale at the bottom, which would inform the
+                        app if the pills have been taken or not. The MedWheel also included an optional alarm, for an
+                        auditory reminder.</p>
+
+                    <figure class="fade">
+                        <button type="button" class="preview" commandfor="medwheel-open-preview" command="show-modal">
+                            <img src="res/img/mw-open.png" loading="lazy">
+                        </button>
+                    </figure>
+
+                </section>
+
+                <section class="reveal" id="hacks">
+                    <h2>Part 1 - The Hackathon Project</h2>
+
+                    <figure class="fade">
+                        <button type="button" class="preview" commandfor="medwheel-hacks-preview" command="show-modal"
+                            aria-label="Enlarge the MedWheel logo">
+                            <img src="res/img/mw-hack.jpeg" loading="lazy">
+                        </button>
+                        <figcaption>Our crude hackathon demo.</figcaption>
+                    </figure>
+
+                    <p class="reveal"> The MedWheel was first introduced to the public during our presentation for
+                        <a
+                            href="https://ycp-hacks2024.devpost.com/project-gallery?_gl=1*28d0ob*_gcl_au*MzYzNTg2ODg2LjE3OTA5OTMzNzY.*_ga*MzMzNzk3MzM4LjE3OTA5OTMzNzY.*_ga_0YHJK3Y10M*czE3OTExMzkzMzAkbzMkZzEkdDE3OTExMzkzMzUkajU1JGwwJGgw">YCP
+                            Hacks 2024</a> (11/1/2024 - 11/3/2024). We spent all ~60 hours of the event developing a
+                        prototype (out of an old shoebox and paper plate glued a stepper motor), and a mobile app with
+                        a backend server to control the device and store user information.
+                    </p>
+
+                    <figure class="fade">
+                        <button type="button" class="preview" commandfor="medwheel-app-preview" command="show-modal"
+                            aria-label="Enlarge the MedWheel logo">
+                            <img src="res/img/mw-app.png" loading="lazy">
+                        </button>
+                        <figcaption>Two screenshots from the concept mobile app.</figcaption>
+                    </figure>
+
+                    <p class="reveal">Following our presentation, the MedWheel was awarded first place overall.</p>
+
+                </section>
+
+                <section id="startup">
+                    <h2 class="reveal">Startup Company</h2>
+                    <p class="reveal">Immediately after the hackathon victory, the project started to receive a lot
+                        of interest. People would ask us to make this into a real product, as they had loved ones who
+                        would benefit from a solution like this. Seeing a market opportunity, we decided to explore the
+                        possibility of making this idea into a real product. The first thing we did was apply for the
+                        McNees Accelerator Program through York College's J.D. Brown Center for Entrepreneurship.</p>
+
+                    <figure class="fade">
+                        <button type="button" class="preview" commandfor="medwheel-team-preview" command="show-modal"
+                            aria-label="Enlarge the MedWheel team photo">
+                            <img src="res/img/medwheel-founders.jpeg" loading="lazy">
+                        </button>
+                        <figcaption>The MedWheel team.</figcaption>
+                    </figure>
+
+                    <p class="reveal">The accelerator was an 8 week program that helped us seriously evaluate our value proposition,
+                        conduct market research, evaluate what was to be included as a minimum viable product, project
+                        our finances, and ultimately pitch our idea to a group of investors.</p>
+
+                    <figure class="fade">
+                        <button type="button" class="preview" commandfor="medwheel-finances-preview"
+                            command="show-modal" aria-label="Enlarge the MedWheel team photo">
+                            <img src="res/img/mw-finances.png" loading="lazy">
+                        </button>
+                        <figcaption>Projected 3-year financial statement.</figcaption>
+					</figure>
+
+					<p class="reveal">
+					MedWheel competed against a myriad of local businesses for a $5000 initial investment. Ultimately, the investors 
+					felt that this money would be of greater benefit to a business with a smaller scope than ours. Nevertheless, we 
+					received lots of positive feedback regarding the idea, and even some requests for an early prototype.
+					</p>
+
+                    <figure class="fade">
+						<iframe
+                    	    src="https://www.youtube.com/embed/Sq2o0XDNZVs?si=pANrII9IGhs99iLi"
+                    	    title="YouTube video player"
+                    	    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    	    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    	</iframe>
+                        <figcaption>The final pitch can be viewed here. My section starts at 2:01.</figcaption>
+					</figure>
+
+                </section>
+
+				<section class="reveal">
+					<p class="reveal">
+					Despite not recieving any starting capital, I believe that our business proposition was based on a strong foundation. I am 
+					extremely proud of the work that the team did throughout this process, and the lessons we've learned along the way are invaluable.
+					Based on the feedback that we've received, I believe that The MedWheel would have been an extremely successful product. However, 
+					at the end of the day each of us decided to move onto bigger and better things.
+					</p>
+				</section>
+
+                <section class="reveal" id="resources">
+                    <h2>Project Links</h2>
+                    <ul>
+                        <li><a href="https://devpost.com/software/mediwheel">Hackathon submission and demonstrations</a>
+                        </li>
+                        <li><a href="https://github.com/brendanhaney/medwheel">Project source code</a></li>
+                        <li><a
+                                href="https://www.linkedin.com/posts/b-haney_a-few-short-weeks-ago-i-had-the-incredible-activity-7267216351834861568-TltP">My
+                                project announcement</a></li>
+                        <li><a
+                                href="https://www.ycp.edu/news/adding-spice-success-york-college-hot-sauce-business-and-others-participate-mcnees-accelerator">York
+                                College's accelerator feature</a></li>
+                    </ul>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <dialog class="popup image-popup" id="medwheel-gif-preview">
+        <div class="toolbar">
+            <button type="button" class="close" commandfor="medwheel-gif-preview" command="close"
+                aria-label="Close image preview" autofocus>
+                <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.618"
+                    stroke-linecap="round" aria-hidden="true" focusable="false">
+                    <path d="m6 6 12 12M18 6 6 18" />
+                </svg>
+            </button>
+        </div>
+        <div class="content">
+            <figure>
+                <div class="image" style="--image-width: 1366px; --image-ratio: 1366 / 768">
+                    <img src="res/img/medwheel.gif" loading="lazy" decoding="async">
+                </div>
+            </figure>
+        </div>
+    </dialog>
+
+    <dialog class="popup image-popup" id="medwheel-open-preview">
+        <div class="toolbar">
+            <button type="button" class="close" commandfor="medwheel-open-preview" command="close"
+                aria-label="Close image preview" autofocus>
+                <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.618"
+                    stroke-linecap="round" aria-hidden="true" focusable="false">
+                    <path d="m6 6 12 12M18 6 6 18" />
+                </svg>
+            </button>
+        </div>
+        <div class="content">
+            <figure>
+                <div class="image" style="--image-width: 1366px; --image-ratio: 1366 / 768">
+                    <img src="res/img/mw-open.png" loading="lazy" decoding="async">
+                </div>
+                <figcaption id="medwheel-logo-preview-caption">The lid on the 'Wheel' could be removed (by a caretaker)
+                    to reveal pill compartments.</figcaption>
+            </figure>
+        </div>
+    </dialog>
+
+    <dialog class="popup image-popup" id="medwheel-team-preview" aria-labelledby="medwheel-team-preview-caption">
+        <div class="toolbar">
+            <button type="button" class="close" commandfor="medwheel-team-preview" command="close"
+                aria-label="Close image preview" autofocus>
+                <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.618"
+                    stroke-linecap="round" aria-hidden="true" focusable="false">
+                    <path d="m6 6 12 12M18 6 6 18" />
+                </svg>
+            </button>
+        </div>
+        <div class="content">
+            <figure>
+                <div class="image" style="--image-width: 800px; --image-ratio: 800 / 600">
+                    <img src="res/img/medwheel-founders.jpeg"
+                        alt="The four members of the MedWheel team standing together." width="800" height="600"
+                        loading="lazy" decoding="async">
+                </div>
+                <figcaption id="medwheel-team-preview-caption">The MedWheel team.</figcaption>
+            </figure>
+        </div>
+    </dialog>
+
+    <dialog class="popup image-popup" id="medwheel-finances-preview" aria-labelledby="medwheel-team-preview-caption">
+        <div class="toolbar">
+            <button type="button" class="close" commandfor="medwheel-finances-preview" command="close"
+                aria-label="Close image preview" autofocus>
+                <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.618"
+                    stroke-linecap="round" aria-hidden="true" focusable="false">
+                    <path d="m6 6 12 12M18 6 6 18" />
+                </svg>
+            </button>
+        </div>
+        <div class="content">
+            <figure>
+                <div class="image" style="--image-width: 1280px; --image-ratio: 1280 / 720">
+                    <img src="res/img/mw-finances.png" loading="lazy" decoding="async">
+                </div>
+                <figcaption id="medwheel-team-preview-caption">Three Year Financial Projection</figcaption>
+            </figure>
+        </div>
+    </dialog>
+
+    <footer class="footer">
+        <p>2026 bhaney.net</p>
+    </footer>
+</body>
+
+</html>
